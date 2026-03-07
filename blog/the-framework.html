@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Framework: How Agentic Development Actually Works | Theoretically Impossible Solutions</title>
+  <meta name="description" content="A detailed walkthrough of the five-phase agentic development framework I've built — from recording a conversation through orchestrated development with review gates, milestone checkpoints, and drift prevention.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-brand">
+        <img src="../images/logo.jpeg" alt="Theoretically Impossible Solutions logo">
+        <div class="site-brand-text">
+          <span class="site-brand-name">Theoretically Impossible Solutions</span>
+          <span class="site-brand-tagline">Improvise. Adapt. Overcome.</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html" class="active">Blog</a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org" class="btn btn--primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Post Header -->
+  <section class="post-header">
+    <div class="container--narrow">
+      <h1>The Framework: How Agentic Development Actually Works</h1>
+      <p class="post-meta">March 7, 2026 &middot; Kevin Phifer</p>
+    </div>
+  </section>
+
+  <!-- Post Content -->
+  <article class="post-content">
+    <div class="container--narrow">
+
+      <p>
+        In <a href="copilot-to-orchestrator.html">the last post</a>, I told the story of how I went from using AI as a code completion tool to building a full agentic development framework in three weeks. That post was the "what happened." This one is the "how it works."
+      </p>
+
+      <p>
+        What follows is the framework I've built through three major iterations, refined by real projects and real failures. It's not theoretical &mdash; it's the actual process I use every day. It has five phases, a library of specialized skills, and an orchestration pattern designed to solve the single biggest problem in agentic development: context drift.
+      </p>
+
+      <h2>The Core Philosophy</h2>
+
+      <p>
+        Before the mechanics, the principles. Everything in this framework flows from a few hard-won beliefs:
+      </p>
+
+      <p>
+        <strong>Context drift is the primary adversary.</strong> Over the course of a long session, the AI will start dropping things from its working memory. Not because it's broken &mdash; because it has to manage a finite context window. The things it drops are often the things you care most about: architectural patterns, testing standards, naming conventions. The entire supervisor/worker architecture exists to combat this.
+      </p>
+
+      <p>
+        <strong>Separate concerns between human-driven discovery, AI-assisted specification, and fully orchestrated development.</strong> Each phase uses different tools and has different context boundaries. Clean handoffs between phases prevent the accumulated assumptions of one phase from leaking into the next.
+      </p>
+
+      <p>
+        <strong>Vertical slices over horizontal layers.</strong> Stories deliver user-visible functionality, not technical layers. Foundation work is bounded to the minimum needed to unblock the first milestone. This is scrum orthodoxy, and it applies even more strongly in agentic development because the cost of course correction is lower.
+      </p>
+
+      <p>
+        <strong>Trust but verify.</strong> The AI does the work, but independent agents check the work. Self-review is unreliable &mdash; the same biases that led to a decision will confirm that decision was correct. Separate review agents with fresh context catch what self-review misses.
+      </p>
+
+      <h2>Phase 1: Discovery &amp; Capture</h2>
+
+      <p>
+        <strong>Tool:</strong> Otter.ai<br>
+        <strong>Output:</strong> Raw transcript
+      </p>
+
+      <p>
+        This is where it all starts, and it's deliberately low-tech. I hit record and talk. If I'm working with a client, we talk together. There's no required structure &mdash; the goal is to get every idea, requirement, concern, and tangential thought captured. I call it "puking it out." You go down one rabbit hole, realize you need to go back, chase another thread &mdash; that's fine. Get it all on tape.
+      </p>
+
+      <p>
+        The key insight is that this conversation is the highest-bandwidth way to transfer domain knowledge. Trying to write a requirements document from scratch is slow and lossy. Talking about what you want, how it should work, what the edge cases are &mdash; that captures nuance that formal documentation misses. Otter.ai transcribes it in real time, and the transcript becomes the input artifact for the next phase.
+      </p>
+
+      <h2>Phase 2: PRD Refinement</h2>
+
+      <p>
+        <strong>Tool:</strong> Claude Web Interface<br>
+        <strong>Output:</strong> PRD + Screen Inventory + Decisions Log
+      </p>
+
+      <p>
+        I upload the transcript to Claude in the web interface and ask it to make sense of the conversation and produce a first-pass Product Requirements Document. Claude is remarkably good at this &mdash; it organizes the chaos, identifies the themes, and produces something structured from something freeform.
+      </p>
+
+      <p>
+        Then we enter what I think of as the convergence loop. I ask Claude: "Do you have any questions, or am I missing anything?" It always does. It identifies gaps I hadn't considered, asks clarifying questions, raises edge cases. I answer, refine, and ask again. When it's running out of pertinent questions and starting to suggest marginal things &mdash; that diminishing return is the exit signal. Time to move on.
+      </p>
+
+      <p>
+        My friend Mike introduced me to what I call the "Joseph Maneuver" &mdash; just keep asking Claude "what am I missing?" or "what should I be thinking about that I'm not?" It's simple, but it's incredibly effective. Claude's suggestions will go from "you haven't defined your authentication model" to "have you considered what happens if the user's timezone changes mid-session." When you've gone from critical to trivial, you're done.
+      </p>
+
+      <p>
+        During this phase, I also define the engineering scope: tech stack, compilable components (what each deployable unit is and what it does), and architectural constraints. I learned the hard way that if you don't explicitly define service boundaries, Claude Code will make assumptions about them during development &mdash; and those assumptions might include services talking directly to databases when you expected them to go through an API.
+      </p>
+
+      <p>
+        The phase produces three artifacts: the PRD itself, a Screen Inventory (every screen, every modal, every navigation flow, every data dependency), and a Decisions Log. The Decisions Log is something I added after learning that Claude Code benefits enormously from knowing not just <em>what</em> was decided, but <em>why</em>. Each entry follows a simple pattern: what was decided, what alternatives were considered, and why this choice was made.
+      </p>
+
+      <h2>Phase 3: Project Bootstrap</h2>
+
+      <p>
+        <strong>Tool:</strong> Claude Code<br>
+        <strong>Output:</strong> Initialized repo with milestoned backlog
+      </p>
+
+      <p>
+        This is the handoff from Claude Web to Claude Code &mdash; a clean context boundary. Claude Code gets the PRD, Screen Inventory, and Decisions Log, along with my engineering standards (more on those in a moment).
+      </p>
+
+      <p>
+        I have a skill called <code>prd-to-backlog</code> that decomposes the PRD into a milestoned backlog of vertical-slice stories. It reads everything, identifies foundation work (kept minimal), groups features into milestones, and creates GitHub issues with proper labels and milestone markers. Before creating anything, it presents the full plan for human review. I learned not to skip this step.
+      </p>
+
+      <p>
+        The backlog uses GitHub Projects with a Kanban board: Inbox, Up Next, In Progress, Waiting/Blocked, Done. Stories follow vertical-slice principles &mdash; entity lifecycle operations (create, list, view, delete) travel together as one story, not four.
+      </p>
+
+      <h2>The Engineering Standards Repo</h2>
+
+      <p>
+        This deserves its own section because it's the thing that makes everything else work.
+      </p>
+
+      <p>
+        After my v1 experience &mdash; where Claude made architectural assumptions I didn't agree with and drifted away from patterns I considered non-negotiable &mdash; I created a separate repository containing everything I care about: how I write code, how I structure projects, how I test, how I handle errors, how I manage dependencies. All of it.
+      </p>
+
+      <p>
+        The repo contains standards for architecture, API design, database patterns, testing (including my strong preference for real fakes over mocking frameworks), security, logging, error handling, git workflow, and more. It also contains the skills that drive the development pipeline, issue templates, and a project-level CLAUDE.md template that every new project uses.
+      </p>
+
+      <p>
+        Every time Claude Code starts a session &mdash; whether it's a new project or picking up an existing one &mdash; it pulls the latest standards, reads them, and syncs the skills. This is the anti-drift mechanism. No matter how long a session runs, every new worker agent starts by re-reading the standards. The non-negotiables are always fresh.
+      </p>
+
+      <h2>Phase 4: Orchestrated Development</h2>
+
+      <p>
+        <strong>Tool:</strong> Claude Code with the orchestrate skill<br>
+        <strong>Output:</strong> Implemented, reviewed, tested, merged code
+      </p>
+
+      <p>
+        This is where the supervisor/worker pattern does its thing. The orchestrator picks up a ticket from the backlog and runs it through a multi-stage pipeline, spawning fresh sub-agents for each stage:
+      </p>
+
+      <p>
+        <strong>Stage 1: Refine.</strong> A dedicated agent enriches the story with technical detail and acceptance criteria, informed by the current state of the codebase and the engineering standards.
+      </p>
+
+      <p>
+        <strong>Stage 2: Implement.</strong> A fresh agent implements the story and creates a pull request. This is a clean context &mdash; it reads the standards, understands the story, and writes code without carrying baggage from previous stories.
+      </p>
+
+      <p>
+        <strong>Stage 3: Engineering Review.</strong> Another fresh agent reviews the PR against the engineering standards. If it finds issues, it kicks the PR back to the implementer (in fix mode) for corrections. This can loop up to three times. The key here is that the reviewer has independent context &mdash; it's not confirming its own assumptions.
+      </p>
+
+      <p>
+        <strong>Stage 4: Security Review.</strong> A separate agent runs an OWASP Top 10 security analysis. Same loop pattern &mdash; up to two iterations of findings and fixes. When it passes, the PR gets merged.
+      </p>
+
+      <p>
+        <strong>Stage 5: Integration Tests.</strong> After the implementation PR is merged, a new agent writes integration tests on a separate PR. Those tests get their own engineering review cycle before being merged.
+      </p>
+
+      <p>
+        <strong>Stage 6: Close.</strong> The orchestrator verifies acceptance criteria are met and closes the issue.
+      </p>
+
+      <p>
+        The orchestrator can run in supervised mode (hard stop between each ticket, for early-stage projects or when you want close oversight) or autonomous mode (continues ticket-to-ticket, stopping only at milestones or circuit breakers).
+      </p>
+
+      <h2>Milestone Gates and Circuit Breakers</h2>
+
+      <p>
+        Milestones are review gates &mdash; they're the moments where I stop, launch the application, interact with it, and verify it matches what I expected. Each milestone delivers a coherent set of user-visible functionality. The orchestrator stops at every milestone regardless of operating mode, runs a smoke test checklist, and waits for my approval before continuing.
+      </p>
+
+      <p>
+        Circuit breakers are the emergency stops. Even in autonomous mode, the orchestrator halts if three consecutive tickets are blocked (something systemic is wrong), if a merge conflict occurs (needs human judgment), if the build breaks on main after a merge (rollback tag available), or if review iterations are exhausted on consecutive tickets (pattern problem, not a one-off).
+      </p>
+
+      <p>
+        Before any work begins on a ticket, the orchestrator tags main as a rollback point. If something goes wrong, there's always a clean state to return to.
+      </p>
+
+      <h2>Phase 5: Session Summary &amp; Review</h2>
+
+      <p>
+        <strong>Tool:</strong> Human + Claude Code<br>
+        <strong>Output:</strong> Session report, refined standards
+      </p>
+
+      <p>
+        After a development session, the orchestrator produces a summary: what was completed, what's blocked, what milestones were reached, token usage per stage (for cost tracking), and any PRD amendments discovered during development &mdash; things that contradict or are missing from the original PRD.
+      </p>
+
+      <p>
+        Then I run the application, test flows manually, and debug with Claude Code as needed. Insights from this phase feed back into the engineering standards, the project-level documentation, and the skills themselves. The framework gets better with every project.
+      </p>
+
+      <h2>AgentZula: The Process in Action</h2>
+
+      <p>
+        The project I'm building right now &mdash; AgentZula &mdash; is the first one built entirely within this v3 framework. It's a developer work-tracking and productivity system that passively collects activity signals from Claude Code sessions and GitHub repos, maintains a work log for invoicing, and runs an LLM-powered agent that monitors daily goals, manages a task list, and sends nudges when it's time to switch focus.
+      </p>
+
+      <p>
+        It started the way everything starts now: I hit record, talked through what I wanted for about twenty minutes, fed the transcript to Claude Web, refined the PRD through several rounds of the convergence loop, produced a Decisions Log, and handed the whole package to Claude Code. The repo now has a milestoned backlog, a clean architecture, and development is proceeding ticket by ticket through the orchestrated pipeline.
+      </p>
+
+      <p>
+        It's also a product I actually need &mdash; a system that tracks what I'm doing across multiple client projects so I can invoice accurately and stay on task. The fact that I'm building it with the very process it's designed to support is either poetic or recursive, depending on your perspective.
+      </p>
+
+      <h2>What This Means</h2>
+
+      <p>
+        I'm not claiming this is the only way to do agentic development, or even the best way. It's the way I've arrived at after three iterations, multiple projects, and a lot of trial and error. What I am claiming is that agentic development requires a <em>framework</em> &mdash; a deliberate structure for how you interact with the AI &mdash; and that most of the failure modes people experience aren't limitations of the AI itself. They're architecture problems.
+      </p>
+
+      <p>
+        Drift isn't a bug in Claude. It's a consequence of finite context windows that you can engineer around. Hallucinated architecture isn't the AI being stupid. It's the AI filling in gaps you left open. Code quality issues aren't proof that AI can't write good code. They're what happens when you don't define what "good" means and enforce it with independent review.
+      </p>
+
+      <p>
+        The framework solves these problems. Not perfectly &mdash; nothing is perfect &mdash; but systematically.
+      </p>
+
+      <p>
+        This blog will continue to document the journey as it evolves. There's more to learn, more to refine, and more to share. If you're a developer thinking about moving into agentic development, or a business leader trying to understand what this means for your organization, I hope this gives you a concrete picture of what the work actually looks like.
+      </p>
+
+      <p>
+        It looks like the future. And it's already here.
+      </p>
+
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+        <p style="color: var(--color-text-light); font-size: 0.9rem;">
+          <strong>Kevin Phifer</strong> is the founder of <a href="../about.html">Theoretically Impossible Solutions LLC</a>, specializing in agentic AI development and consulting. You can reach him at <a href="mailto:kevin.phifer@theoreticallyimpossible.org">kevin.phifer@theoreticallyimpossible.org</a>.
+        </p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org">Contact</a>
+      </nav>
+      <p class="footer-copyright">&copy; 2026 Theoretically Impossible Solutions LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

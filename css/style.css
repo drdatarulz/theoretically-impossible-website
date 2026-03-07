@@ -141,6 +141,16 @@ img {
   border-bottom-color: var(--color-accent);
 }
 
+.site-nav a.btn--primary {
+  color: var(--color-white);
+  border-bottom: none;
+}
+
+.site-nav a.btn--primary:hover {
+  color: var(--color-white);
+  border-bottom: none;
+}
+
 /* Mobile nav toggle */
 .nav-toggle {
   display: none;

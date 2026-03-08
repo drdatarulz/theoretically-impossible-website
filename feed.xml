@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Theoretically Impossible Solutions</title>
+    <link>https://theoreticallyimpossible.org</link>
+    <description>Notes from the frontier of agentic AI development. Real experience, real insights, no hype.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 08 Mar 2026 12:00:00 -0500</lastBuildDate>
+    <atom:link href="https://theoreticallyimpossible.org/feed.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://theoreticallyimpossible.org/images/logo-512.png</url>
+      <title>Theoretically Impossible Solutions</title>
+      <link>https://theoreticallyimpossible.org</link>
+    </image>
+
+    <item>
+      <title>SITREP: What Agentic Development Opens Up</title>
+      <link>https://theoreticallyimpossible.org/blog/what-agentic-development-opens-up.html</link>
+      <guid>https://theoreticallyimpossible.org/blog/what-agentic-development-opens-up.html</guid>
+      <pubDate>Sun, 08 Mar 2026 12:00:00 -0500</pubDate>
+      <description>I needed to test SMTP edge cases that no sane manager would budget for. Agentic development didn't just make it cheaper — it made it thinkable.</description>
+    </item>
+
+    <item>
+      <title>SITREP: The AI That Knew It Could</title>
+      <link>https://theoreticallyimpossible.org/blog/the-ai-that-knew-it-could.html</link>
+      <guid>https://theoreticallyimpossible.org/blog/the-ai-that-knew-it-could.html</guid>
+      <pubDate>Sat, 07 Mar 2026 12:00:00 -0500</pubDate>
+      <description>Working on AgentZula, I watched Claude Code discover it had the ability to modify another AI's configuration — and politely ask permission to do it.</description>
+    </item>
+
+    <item>
+      <title>The Framework: How Agentic Development Actually Works</title>
+      <link>https://theoreticallyimpossible.org/blog/the-framework.html</link>
+      <guid>https://theoreticallyimpossible.org/blog/the-framework.html</guid>
+      <pubDate>Sat, 07 Mar 2026 12:00:00 -0500</pubDate>
+      <description>A detailed walkthrough of the five-phase agentic development framework I've built — from recording a conversation through orchestrated development with review gates, milestone checkpoints, and drift prevention.</description>
+    </item>
+
+    <item>
+      <title>From Copilot to Orchestrator: My Three-Week Transformation</title>
+      <link>https://theoreticallyimpossible.org/blog/copilot-to-orchestrator.html</link>
+      <guid>https://theoreticallyimpossible.org/blog/copilot-to-orchestrator.html</guid>
+      <pubDate>Fri, 06 Mar 2026 12:00:00 -0500</pubDate>
+      <description>How I went from using AI as a code helper to building a full agentic development framework — and collapsed a month-long project into a week.</description>
+    </item>
+
+    <item>
+      <title>Why "Theoretically Impossible"?</title>
+      <link>https://theoreticallyimpossible.org/blog/origin-story.html</link>
+      <guid>https://theoreticallyimpossible.org/blog/origin-story.html</guid>
+      <pubDate>Thu, 05 Mar 2026 12:00:00 -0500</pubDate>
+      <description>Every company name has a story. Ours started with a line from a film, a career spent proving things could be done, and a philosophy that became an identity.</description>
+    </item>
+
+  </channel>
+</rss>

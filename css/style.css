@@ -153,6 +153,35 @@ img {
   border-bottom: none;
 }
 
+/* RSS icon in nav */
+.rss-link {
+  display: inline-flex;
+  align-items: center;
+  margin-left: -1.5rem;
+}
+
+.rss-link svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--color-text-light);
+  transition: fill 0.2s ease;
+}
+
+.rss-link:hover svg {
+  fill: var(--color-accent);
+}
+
+.rss-link--footer svg {
+  width: 13px;
+  height: 13px;
+  fill: rgba(255, 255, 255, 0.9);
+  vertical-align: -1px;
+}
+
+.rss-link--footer:hover svg {
+  fill: var(--color-white);
+}
+
 /* Mobile nav toggle */
 .nav-toggle {
   display: none;
@@ -697,6 +726,10 @@ img {
 
   .services-grid {
     grid-template-columns: 1fr;
+  }
+
+  .rss-link {
+    margin-left: 0;
   }
 
   .blog-preview-list {

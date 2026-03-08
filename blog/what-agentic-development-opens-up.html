@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SITREP: What Agentic Development Opens Up | Theoretically Impossible Solutions</title>
+  <meta name="description" content="I needed to test SMTP edge cases that no sane manager would budget for. Agentic development didn't just make it cheaper — it made it thinkable.">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <meta property="og:title" content="SITREP: What Agentic Development Opens Up">
+  <meta property="og:description" content="I needed to test SMTP edge cases that no sane manager would budget for. Agentic development didn't just make it cheaper — it made it thinkable.">
+  <meta property="og:image" content="https://theoreticallyimpossible.org/images/logo-512.png">
+  <meta property="og:url" content="https://theoreticallyimpossible.org/blog/what-agentic-development-opens-up.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://theoreticallyimpossible.org/blog/what-agentic-development-opens-up.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ERT6LR74L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3ERT6LR74L');</script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-brand">
+        <img src="../images/logo.png" alt="Theoretically Impossible Solutions logo">
+        <div class="site-brand-text">
+          <span class="site-brand-name">Theoretically Impossible Solutions</span>
+          <span class="site-brand-tagline">Improvise. Adapt. Overcome.</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html" class="active">Blog</a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org" class="btn btn--primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Post Header -->
+  <section class="post-header">
+    <div class="container--narrow">
+      <div style="margin-bottom: 0.75rem;"><span class="sitrep-tag">SITREP</span></div>
+      <h1>What Agentic Development Opens Up</h1>
+      <div class="sitrep-post-meta">
+        <p class="post-meta">March 8, 2026 &middot; Kevin Phifer</p>
+        <div class="sitrep-tags">
+          <span class="sitrep-tag">Testing</span>
+          <span class="sitrep-tag">SMTP</span>
+          <span class="sitrep-tag">Agentic Development</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Post Content -->
+  <article class="post-content">
+    <div class="container--narrow">
+
+      <p>
+        Here's something I wouldn't have done two months ago.
+      </p>
+
+      <p>
+        I've been building a proper mail transfer agent &mdash; not a wrapper around someone else's API, but an actual MTA. It does MX lookups, connects directly to the receiving server, and delivers the mail itself. Fallbacks, retries, the whole nine yards. If you've ever run your own mail infrastructure, you already know where this is going.
+      </p>
+
+      <p>
+        Email delivery has edge cases that are genuinely painful to test. Greylisting, for starters &mdash; that's when a receiving server hits you with a 450 error, which is polite server-speak for "I don't know you yet, come back in a few minutes and prove you're not a spammer." Most spam systems fire and forget, so they never retry. Legitimate servers do. It's an effective filter, but it means your MTA needs to be smart enough to queue the message and try again later.
+      </p>
+
+      <p>
+        Then there are bounces &mdash; not the instant kind where the server says "no such user" right away, but the delayed ones. The front-end mail server accepts the message, runs it through its spam filters and journaling, passes it along to the actual mailbox server, and <em>then</em> discovers the address doesn't exist. By that point you've already gotten a 250 OK and moved on with your life. Now you're dealing with an asynchronous bounce notification that your system needs to catch, interpret, and handle gracefully.
+      </p>
+
+      <p>
+        Add in relay denials, connection timeouts, and the dozen other ways an SMTP conversation can go sideways, and you've got a testing problem. A real one.
+      </p>
+
+      <p>
+        In any shop I've ever managed, the answer would have been the same: test what you can locally, and accept that the weird edge cases get validated in production. Not because anyone likes that answer, but because the alternative &mdash; building a full SMTP test harness that simulates greylisting, delayed bounces, and relay failures on demand &mdash; would eat an entire sprint. You'd burn thousands of dollars in developer time building infrastructure that only exists to test other infrastructure. I've seen proposals like that, and even when I thought the engineering was sound, I'd have had a hard time approving the spend.
+      </p>
+
+      <p>
+        But that calculus doesn't apply anymore.
+      </p>
+
+      <p>
+        It hit me mid-conversation with Claude. I was literally about to type "we'll just have to test those in the wild" when I stopped and thought: wait. I have an effectively unlimited development resource sitting right here. Why <em>wouldn't</em> I build the test harness?
+      </p>
+
+      <p>
+        So I asked. Not even a formal PRD &mdash; just a conversation. "Could you build a mock SMTP server that simulates these scenarios?" And what happened next is the part that really got me.
+      </p>
+
+      <p>
+        Claude didn't just start coding from scratch. It asked me what I needed, walked through the scenarios &mdash; and then went and looked to see what already existed. It found an IMAP testing framework that already handled a chunk of the mail verification work. So instead of reinventing the wheel, it integrated that framework and built everything else around it. The greylisting logic, the delayed bounce simulation, the configurable scenario routing &mdash; all of that was custom, wrapped around a foundation it found on its own.
+      </p>
+
+      <p>
+        That's the part that floored me. It did what a good senior engineer does: it scoped the problem, researched what was already out there, pulled in what made sense, and built the rest. No one told it to go look for existing tools. It just did.
+      </p>
+
+      <p>
+        The finished system accepts REST API calls that configure its behavior: send to this address and get a clean accept, send to that one and get greylisted with a 450, try another and get a delayed bounce after initial acceptance. Relay denials, unknown user rejections, the full menu &mdash; all configurable, all repeatable.
+      </p>
+
+      <p>
+        The whole thing was running within the session. No sprint planning, no backlog grooming, no arguments about whether test infrastructure belongs in this quarter's roadmap.
+      </p>
+
+      <h2>The Real Point</h2>
+
+      <p>
+        This isn't a story about email. It's about what happens when there's no incremental cost to building something.
+      </p>
+
+      <p>
+        There's a whole category of work that every experienced engineer knows would be valuable but isn't worth doing. Custom test harnesses. One-off data migration validators. Prototype UIs for conversations that are still in the "what if" stage. The ROI is there in theory, but the practical cost makes it a non-starter. So you skip it, work around it, and accept the risk.
+      </p>
+
+      <p>
+        Agentic development changes that math. I'm paying for Claude whether I build the test harness or not. The subscription is the same whether I use it for the main project or spin up side infrastructure in the same session. There's no incremental cost &mdash; no additional sprint, no extra headcount, no line item to justify. So the question flips from "is this worth building?" to "why <em>wouldn't</em> I build it?"
+      </p>
+
+      <p>
+        That's the part people miss when they talk about AI replacing developers. It's not about doing the same things faster &mdash; it's about doing things you'd never have greenlit in the first place.
+      </p>
+
+      <p>
+        And here's what I keep thinking about: right now I'm on a flat $200/month subscription. What happens when the pricing shifts to pure token-based billing, or when that subscription tier grows tenfold? The economics of what's worth building are already shifting. Whether the cost goes down or up from here, the calculus has permanently changed. Once you've seen what's possible when incremental cost isn't a factor, you can't unsee it.
+      </p>
+
+      <p>
+        My buddy Mike calls it "digital prepping." He's already looking at self-hosted models, open-source alternatives, anything that means he won't be entirely beholden to someone else's pricing page. I laughed when he first said it. Now I'm starting to think maybe he's right.
+      </p>
+
+      <p>
+        I built a test harness I wouldn't have approved as a manager, using a tool I was already using for the main build, in the same session, at no incremental cost. And my MTA is better for it.
+      </p>
+
+      <p>
+        That's what this opens up.
+      </p>
+
+      <p><a href="../blog.html">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org">Contact</a>
+      </nav>
+      <p class="footer-copyright">&copy; 2026 Theoretically Impossible Solutions LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>This site uses cookies to understand how visitors engage with our content. By continuing to browse, you consent to our use of cookies.</p>
+    <button onclick="document.getElementById('cookieBanner').style.display='none';document.cookie='cookie_consent=1;max-age=31536000;path=/;SameSite=Lax';">Got it</button>
+  </div>
+  <script>if(!document.cookie.includes('cookie_consent=1')){document.getElementById('cookieBanner').style.display='flex';}</script>
+
+</body>
+</html>

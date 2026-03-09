@@ -5,13 +5,21 @@
     <link>https://theoreticallyimpossible.org</link>
     <description>Notes from the frontier of agentic AI development. Real experience, real insights, no hype.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Mar 2026 12:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 09 Mar 2026 12:00:00 -0500</lastBuildDate>
     <atom:link href="https://theoreticallyimpossible.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://theoreticallyimpossible.org/images/logo-512.png</url>
       <title>Theoretically Impossible Solutions</title>
       <link>https://theoreticallyimpossible.org</link>
     </image>
+
+    <item>
+      <title>The First Code Review</title>
+      <link>https://theoreticallyimpossible.org/blog/the-first-code-review.html</link>
+      <guid>https://theoreticallyimpossible.org/blog/the-first-code-review.html</guid>
+      <pubDate>Mon, 09 Mar 2026 12:00:00 -0500</pubDate>
+      <description>I handed AI-generated code to a senior engineer for a real code review. The line-by-line quality was solid. The architectural lessons changed how I build everything going forward.</description>
+    </item>
 
     <item>
       <title>SITREP: What Agentic Development Opens Up</title>

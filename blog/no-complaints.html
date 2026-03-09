@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SITREP: No Complaints | Theoretically Impossible Solutions</title>
+  <meta name="description" content="I decided mid-project to add comments to the entire codebase. Claude gave me three options, I picked one, and it went through everything without a word of protest. Try that with a team of engineers.">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <meta property="og:title" content="SITREP: No Complaints">
+  <meta property="og:description" content="I told Claude to retroactively comment the entire codebase. It didn't complain. Your team would have.">
+  <meta property="og:image" content="https://theoreticallyimpossible.org/images/logo-512.png">
+  <meta property="og:url" content="https://theoreticallyimpossible.org/blog/no-complaints.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://theoreticallyimpossible.org/blog/no-complaints.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ERT6LR74L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3ERT6LR74L');</script>
+  <link rel="alternate" type="application/rss+xml" title="Theoretically Impossible Solutions" href="../feed.xml">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-brand">
+        <img src="../images/logo.png" alt="Theoretically Impossible Solutions logo">
+        <div class="site-brand-text">
+          <span class="site-brand-name">Theoretically Impossible Solutions</span>
+          <span class="site-brand-tagline">Improvise. Adapt. Overcome.</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html" class="active">Blog</a>
+        <a href="../feed.xml" class="rss-link" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg></a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org" class="btn btn--primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Post Header -->
+  <section class="post-header">
+    <div class="container--narrow">
+      <p><span class="sitrep-tag">SITREP</span></p>
+      <h1>No Complaints</h1>
+      <p class="post-meta">March 2026 &middot; Kevin Phifer</p>
+    </div>
+  </section>
+
+  <!-- Post Content -->
+  <article class="post-content">
+    <div class="container--narrow">
+
+      <p>
+        This happened early on, back when I was still getting a feel for what the agentic development process could actually do.
+      </p>
+
+      <p>
+        I'd been poking around the code that Claude had generated, and I'd added Swagger to the API so I could see the endpoints being called and inspect what was coming back. As I was reviewing things, it hit me: I hadn't defined any commenting standards. There was no guidance in my engineering specs about how the code should be commented &mdash; what level of detail, what style, where comments should go. The codebase was readable, but it was largely uncommented.
+      </p>
+
+      <p>
+        So Claude and I had a conversation about it.
+      </p>
+
+      <p>
+        And here's the thing that still makes me chuckle. It gave me three options &mdash; essentially small, medium, and large. Light touch with just the critical stuff, a balanced approach with method-level and section-level comments, or comprehensive documentation-grade commenting throughout. We picked medium.
+      </p>
+
+      <p>
+        Then I said, "Great. Go ahead and run through the entire codebase and add the comments."
+      </p>
+
+      <p>
+        And it did.
+      </p>
+
+      <p>
+        Just &mdash; did it. The whole codebase. No pushback, no negotiating, no passive-aggressive compliance where half the comments say <code>// does the thing</code>. It went file by file, understood the code, and added meaningful comments throughout.
+      </p>
+
+      <p>
+        Now think about that for a second. Imagine you're leading a development team, and you decide mid-project &mdash; after a significant chunk of the code is already written &mdash; that you want to retroactively add comments to everything. Every file, every service, the whole thing. You know exactly how that conversation goes. At best, you get eye rolls and a week of grudging compliance. At worst, you've got people updating their resumes.
+      </p>
+
+      <p>
+        Claude didn't care. It's not that it was obedient &mdash; it's that the task was genuinely useful and it just executed. No ego, no context about how things were done before, no "but we've already shipped three milestones without comments." Just: here are your three options, you picked this one, done.
+      </p>
+
+      <p>
+        There's a broader point here for anyone experimenting with agentic development. If you've got an existing codebase and you want to dip your toe in, this is a nearly risk-free way to start. Point Claude at your code with your commenting guidelines &mdash; or let it propose some &mdash; and let it do the tedious work. You get immediate, visible value, and you start building confidence in what the system can do before you hand it anything more consequential.
+      </p>
+
+      <p>
+        And if you later decide to change your commenting standard? Same thing. Update the spec, tell it to go again. No complaints.
+      </p>
+
+      <p><a href="../blog.html">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org">Contact</a>
+        <a href="../feed.xml" class="rss-link rss-link--footer" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg> RSS</a>
+      </nav>
+      <p class="footer-copyright">&copy; 2026 Theoretically Impossible Solutions LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>This site uses cookies to understand how visitors engage with our content. By continuing to browse, you consent to our use of cookies.</p>
+    <button onclick="document.getElementById('cookieBanner').style.display='none';document.cookie='cookie_consent=1;max-age=31536000;path=/;SameSite=Lax';">Got it</button>
+  </div>
+  <script>if(!document.cookie.includes('cookie_consent=1')){document.getElementById('cookieBanner').style.display='flex';}</script>
+
+</body>
+</html>

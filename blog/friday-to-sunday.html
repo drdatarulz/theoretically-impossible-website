@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friday to Sunday | Theoretically Impossible Solutions</title>
+  <meta name="description" content="Three people spent an hour talking through a product idea on a Friday. By Sunday, it was built, tested, deployed, and documented. Here's how agentic development changes what's possible.">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <meta property="og:title" content="Friday to Sunday">
+  <meta property="og:description" content="From a conversation to a deployed product in one weekend. Here's what agentic development actually looks like.">
+  <meta property="og:image" content="https://theoreticallyimpossible.org/images/logo-512.png">
+  <meta property="og:url" content="https://theoreticallyimpossible.org/blog/friday-to-sunday.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://theoreticallyimpossible.org/blog/friday-to-sunday.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ERT6LR74L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3ERT6LR74L');</script>
+  <link rel="alternate" type="application/rss+xml" title="Theoretically Impossible Solutions" href="../feed.xml">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-brand">
+        <img src="../images/logo.png" alt="Theoretically Impossible Solutions logo">
+        <div class="site-brand-text">
+          <span class="site-brand-name">Theoretically Impossible Solutions</span>
+          <span class="site-brand-tagline">Improvise. Adapt. Overcome.</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html" class="active">Blog</a>
+        <a href="../feed.xml" class="rss-link" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg></a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org" class="btn btn--primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Post Header -->
+  <section class="post-header">
+    <div class="container--narrow">
+      <h1>Friday to Sunday</h1>
+      <p class="post-meta">March 2026 &middot; Kevin Phifer</p>
+    </div>
+  </section>
+
+  <!-- Post Content -->
+  <article class="post-content">
+    <div class="container--narrow">
+
+      <p>
+        A colleague of mine (call him Berney) had been thinking about a product for a while. He works in insurance and spotted a real problem: carriers don't have a decent way to manage form libraries. Every policy is basically a stack of legal documents. Forms. And which forms attach to which products, in which states, under which conditions? That's incredibly complex. Berney had been sketching out data models and spreadsheets on his own, trying to get the idea into shape.
+      </p>
+
+      <p>
+        I'd been telling him about agentic development, and he was curious but skeptical. So I said: let's just run your idea through the process. Give me an afternoon.
+      </p>
+
+      <h2>Friday: The Conversation</h2>
+
+      <p>
+        We got on a call. Me, Berney, and my buddy Kevin, who's spent years in the industry and knows this problem inside and out. I hit record on Otter and said, "Just talk. Tell me everything. Don't worry about structure or tangents. Just get it out."
+      </p>
+
+      <p>
+        And that's what we did. For about an hour, the three of us talked through form inventories, attachment rules, schema definitions, API interactions, product models, and all the edge cases that come with a thirty-year-old industry problem. Berney shared his spreadsheets and data models. Kevin and I drew on our own experience with similar systems. It was the kind of conversation that, in a traditional development shop, would have been the first of about twenty meetings before anyone wrote a line of code.
+      </p>
+
+      <p>
+        Then came the part that made Berney a little nervous.
+      </p>
+
+      <p>
+        I fed the transcript into Claude and started building the PRD. Product requirements document. Claude asked clarifying questions. Good ones. Specific ones. About twenty-two of them. Around question twelve, Berney asked what I'd been waiting for:
+      </p>
+
+      <p>
+        "Is this going to be like dealing with an offshore team? Where the questions never end?"
+      </p>
+
+      <p>
+        I said no. These questions will end, and they're all pertinent. Every one. Claude wasn't confused. It just didn't want to guess. Was this a carrier-facing tool or an MGA-facing tool? Were the attachment rules pure Boolean or could they involve scripted logic? Did form versioning need to track lineage back to ISO source documents? These were real questions. The kind that, if you skip them, you rebuild half the product three months later.
+      </p>
+
+      <p>
+        By end of Friday, we had a PRD and a structured backlog. Milestones, stories, vertical slices. Berney looked it over and said it was solid. Then came the question: "How long will this take?"
+      </p>
+
+      <p>
+        Kevin and I both laughed. I said, "Probably Sunday. But let's plan on giving you a SITREP Monday morning, just so I don't oversell it."
+      </p>
+
+      <p>
+        He didn't believe us.
+      </p>
+
+      <h2>Saturday: The Build</h2>
+
+      <p>
+        Saturday morning, I set the development bot running on the first milestone. This was the first time I'd used a milestone-based approach instead of building the whole thing in one pass, and it turned out to be exactly the right call.
+      </p>
+
+      <p>
+        The first milestone got me the core. Form inventory, basic CRUD, the API layer. I could log in, poke around, see what the thing actually looked like before it got complicated. Pushed it out, set up CI/CD (all through Claude, me directing instead of writing code), ran tests. Then I moved to the next milestone.
+      </p>
+
+      <p>
+        Second milestone. Third. At each stop I could see the product coming together, pull back if something wasn't right, make sure the new code didn't break what was already there. This feels completely different from watching a team grind through a sprint for two weeks, hoping the demo doesn't explode.
+      </p>
+
+      <h2>Sunday: The Finish</h2>
+
+      <p>
+        By Sunday morning, everything was done except the last set of stories. I kicked off that final milestone before heading to church. On the way home, my wife needed to stop at a couple of stores. I sat in the parking lot, checked my phone, and the build was done. Tests passing. Last milestone complete.
+      </p>
+
+      <p>
+        Friday afternoon to Sunday morning. From a conversation to a deployed, tested application with a CI/CD pipeline.
+      </p>
+
+      <p>
+        And we didn't just build it. We built it <em>right</em>. Milestones, tests at each stage, API-first architecture so Berney's clients could integrate programmatically. The kind of structure that takes weeks to argue about in a traditional project before anyone even opens an IDE.
+      </p>
+
+      <h2>What Changed</h2>
+
+      <p>
+        Here's the thing. The tech side is interesting but not the point. The economics are.
+      </p>
+
+      <p>
+        Berney's idea was solid. It hit a real pain point in an industry where people have been limping along with spreadsheets and legacy systems for decades. Under the old model, hire a team, staff a project, run sprints. The cost to validate this would be six figures minimum. Probably more. The kind of investment that kills most ideas right out of the gate.
+      </p>
+
+      <p>
+        What we did over one weekend would have taken a traditional team weeks, maybe months, and required a project manager, a tech lead, two or three developers, and someone to manage the infrastructure. Instead, it was three guys on a call, one afternoon of requirements, and a weekend of directed agentic development.
+      </p>
+
+      <p>
+        That's not a marginal improvement. That's a category change. Ideas that were previously too expensive to even prototype are now buildable over a weekend for the cost of an API subscription. The person driving it doesn't have to be a developer. They need to understand the problem deeply enough to direct the machine.
+      </p>
+
+      <p>
+        I told Berney the email would go out Monday morning. It did. With a URL, login credentials, and full documentation.
+      </p>
+
+      <p>
+        He still doesn't quite believe it happened that fast.
+      </p>
+
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+        <p style="color: var(--color-text-light); font-size: 0.9rem;">
+          <strong>Kevin Phifer</strong> is the founder of <a href="../about.html">Theoretically Impossible Solutions LLC</a>, specializing in agentic AI development and consulting. You can reach him at <a href="mailto:kevin.phifer@theoreticallyimpossible.org">kevin.phifer@theoreticallyimpossible.org</a>.
+        </p>
+      </div>
+
+      <p><a href="../blog.html">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org">Contact</a>
+        <a href="../feed.xml" class="rss-link rss-link--footer" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg> RSS</a>
+      </nav>
+      <p class="footer-copyright">&copy; 2026 Theoretically Impossible Solutions LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>This site uses cookies to understand how visitors engage with our content. By continuing to browse, you consent to our use of cookies.</p>
+    <button onclick="document.getElementById('cookieBanner').style.display='none';document.cookie='cookie_consent=1;max-age=31536000;path=/;SameSite=Lax';">Got it</button>
+  </div>
+  <script>if(!document.cookie.includes('cookie_consent=1')){document.getElementById('cookieBanner').style.display='flex';}</script>
+
+</body>
+</html>

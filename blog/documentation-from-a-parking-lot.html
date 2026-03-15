@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SITREP: Documentation from a Parking Lot | Theoretically Impossible Solutions</title>
+  <meta name="description" content="While my wife shopped for our trip, I sat in the car and kicked off a full documentation suite for an app I'd just finished building. It was done before she got back. That's what zero incremental cost looks like.">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <meta property="og:title" content="SITREP: Documentation from a Parking Lot">
+  <meta property="og:description" content="I generated comprehensive app documentation from my phone in a parking lot. Zero incremental cost. That's the point.">
+  <meta property="og:image" content="https://theoreticallyimpossible.org/images/logo-512.png">
+  <meta property="og:url" content="https://theoreticallyimpossible.org/blog/documentation-from-a-parking-lot.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://theoreticallyimpossible.org/blog/documentation-from-a-parking-lot.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ERT6LR74L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3ERT6LR74L');</script>
+  <link rel="alternate" type="application/rss+xml" title="Theoretically Impossible Solutions" href="../feed.xml">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-brand">
+        <img src="../images/logo.png" alt="Theoretically Impossible Solutions logo">
+        <div class="site-brand-text">
+          <span class="site-brand-name">Theoretically Impossible Solutions</span>
+          <span class="site-brand-tagline">Improvise. Adapt. Overcome.</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html" class="active">Blog</a>
+        <a href="../feed.xml" class="rss-link" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg></a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org" class="btn btn--primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Post Header -->
+  <section class="post-header">
+    <div class="container--narrow">
+      <p><span class="sitrep-tag">SITREP</span></p>
+      <h1>Documentation from a Parking Lot</h1>
+      <p class="post-meta">March 2026 &middot; Kevin Phifer</p>
+    </div>
+  </section>
+
+  <!-- Post Content -->
+  <article class="post-content">
+    <div class="container--narrow">
+
+      <p>
+        Sunday afternoon. The app is basically done. The last milestone finished while I was at church, tests are passing, everything's deployed. My wife needs to run a couple of errands before our trip on Monday, so I'm sitting in the car in a parking lot, waiting.
+      </p>
+
+      <p>
+        And I'm thinking: this thing doesn't have any documentation.
+      </p>
+
+      <p>
+        In the traditional world, documentation is the thing everyone agrees matters and nobody wants to do. Broccoli of software engineering. You know you should do it, you know it helps. But end of a sprint when you're exhausted and the code works and the client's happy, writing docs feels like punishment. Gets pushed to "later" and later never comes. Six months later someone new joins the team, spends two weeks figuring out something they could've learned in an afternoon.
+      </p>
+
+      <p>
+        I've been guilty of this my entire career. Every engineer has.
+      </p>
+
+      <p>
+        I'm sitting in the parking lot with nothing to do and a VM still running that just finished the last milestone. Pull up the phone, tell Claude: let's do documentation. Overview, quick start guide, comprehensive docs for both audiences. Give me everything.
+      </p>
+
+      <p>
+        Claude asked clarifying questions. Good ones. Where does this live? In the app or separate? Who's the audience? I said both audiences, why not? Cost to me for adding a second audience was literally zero. Two months ago that sentence would've been insane.
+      </p>
+
+      <p>
+        It laid out three stories for the documentation work, I approved them, and it started coding. I put my phone down and waited for my wife.
+      </p>
+
+      <h2>The Math That Changed</h2>
+
+      <p>
+        Think about what just happened. I generated comprehensive docs for an entire application from the passenger seat of my car. No IDE. No files. No writer to brief. Described what I wanted, answered two questions, it went to work.
+      </p>
+
+      <p>
+        In the old world, you write it yourself, which eats up days and yanks you out of whatever you're actually building. Or you hire a technical writer, which means briefing them on the codebase, reviewing drafts, endless back and forth. Or most commonly you just skip it, ship without docs, and nobody talks about it.
+      </p>
+
+      <p>
+        Documentation doesn't get written because the cost has always been too high for what feels like a non-urgent task. There's always something more pressing. Another feature. A bug. A demo. Everyone knows docs matter, but they never feel urgent enough. So they lose.
+      </p>
+
+      <p>
+        Agentic development breaks that. When generating docs costs "a couple minutes of direction from your phone," everything changes. Suddenly you can afford to do it. Actually, you can't afford not to.
+      </p>
+
+      <h2>What I Actually Delivered</h2>
+
+      <p>
+        When I sent the email to the team Monday morning, it didn't just have a URL and credentials. It had a full documentation suite built into the app. An overview of what the system does. A quick start guide that gets you going in five minutes. Detailed reference docs for the admin users and the API consumers.
+      </p>
+
+      <p>
+        The client didn't ask for docs. They expected a prototype. They got a prototype with docs. Good docs. Not placeholder good. Useful, actually-written-by-someone-who-knew-the-code good.
+      </p>
+
+      <p>
+        Because Claude understood the code. It wrote the code. Knew every endpoint, every data model, every business rule. Spent the weekend building all of them. Didn't need to be briefed. It was the codebase.
+      </p>
+
+      <h2>The Bigger Point</h2>
+
+      <p>
+        This incremental cost thing won't leave my head. When doing the right thing costs almost nothing, you just do it. Comments, tests, documentation. It all gets done because there's no reason not to.
+      </p>
+
+      <p>
+        All the stuff we've skipped for years because it was too expensive or tedious is suddenly free. The products are better because the AI doesn't have friction. Doesn't get tired. Doesn't deprioritize the boring stuff. Doesn't push docs to "later."
+      </p>
+
+      <p>
+        My wife came back, bags in hand, asked what I'd been doing. I said writing documentation. She gave me that look all engineer spouses have and said, "On your phone? In the car?"
+      </p>
+
+      <p>
+        Yep. In the car.
+      </p>
+
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+        <p style="color: var(--color-text-light); font-size: 0.9rem;">
+          <strong>Kevin Phifer</strong> is the founder of <a href="../about.html">Theoretically Impossible Solutions LLC</a>, specializing in agentic AI development and consulting. You can reach him at <a href="mailto:kevin.phifer@theoreticallyimpossible.org">kevin.phifer@theoreticallyimpossible.org</a>.
+        </p>
+      </div>
+
+      <p><a href="../blog.html">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org">Contact</a>
+        <a href="../feed.xml" class="rss-link rss-link--footer" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg> RSS</a>
+      </nav>
+      <p class="footer-copyright">&copy; 2026 Theoretically Impossible Solutions LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>This site uses cookies to understand how visitors engage with our content. By continuing to browse, you consent to our use of cookies.</p>
+    <button onclick="document.getElementById('cookieBanner').style.display='none';document.cookie='cookie_consent=1;max-age=31536000;path=/;SameSite=Lax';">Got it</button>
+  </div>
+  <script>if(!document.cookie.includes('cookie_consent=1')){document.getElementById('cookieBanner').style.display='flex';}</script>
+
+</body>
+</html>

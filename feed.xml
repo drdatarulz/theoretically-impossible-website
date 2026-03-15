@@ -5,13 +5,21 @@
     <link>https://theoreticallyimpossible.org</link>
     <description>Notes from the frontier of agentic AI development. Real experience, real insights, no hype.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Mar 2026 12:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 15 Mar 2026 12:00:00 -0500</lastBuildDate>
     <atom:link href="https://theoreticallyimpossible.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://theoreticallyimpossible.org/images/logo-512.png</url>
       <title>Theoretically Impossible Solutions</title>
       <link>https://theoreticallyimpossible.org</link>
     </image>
+
+    <item>
+      <title>SITREP: No Complaints</title>
+      <link>https://theoreticallyimpossible.org/blog/no-complaints.html</link>
+      <guid>https://theoreticallyimpossible.org/blog/no-complaints.html</guid>
+      <pubDate>Sun, 15 Mar 2026 12:00:00 -0500</pubDate>
+      <description>I decided mid-project to add comments to the entire codebase. Claude gave me three options, I picked one, and it went through everything without a word of protest. Try that with a team of engineers.</description>
+    </item>
 
     <item>
       <title>The First Code Review</title>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SITREP: Claude Hallucinations, or: How I Learned to Stop Worrying and Trust But Verify | Theoretically Impossible Solutions</title>
+  <meta name="description" content="Claude confidently suggested a command that didn't exist. It looked right, it felt right, and it was completely made up. But if you know to check, you can catch it.">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <meta property="og:title" content="Claude Hallucinations, or: How I Learned to Stop Worrying and Trust But Verify">
+  <meta property="og:description" content="Claude hallucinated a command that didn't exist. But if you know to check, you can catch it.">
+  <meta property="og:image" content="https://theoreticallyimpossible.org/images/logo-512.png">
+  <meta property="og:url" content="https://theoreticallyimpossible.org/blog/trust-but-verify.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://theoreticallyimpossible.org/blog/trust-but-verify.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ERT6LR74L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3ERT6LR74L');</script>
+  <link rel="alternate" type="application/rss+xml" title="Theoretically Impossible Solutions" href="../feed.xml">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-brand">
+        <img src="../images/logo.png" alt="Theoretically Impossible Solutions logo">
+        <div class="site-brand-text">
+          <span class="site-brand-name">Theoretically Impossible Solutions</span>
+          <span class="site-brand-tagline">Improvise. Adapt. Overcome.</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html" class="active">Blog</a>
+        <a href="../feed.xml" class="rss-link" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg></a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org" class="btn btn--primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Post Header -->
+  <section class="post-header">
+    <div class="container--narrow">
+      <p><span class="sitrep-tag">SITREP</span></p>
+      <h1>Claude Hallucinations, or: How I Learned to Stop Worrying and Trust But Verify</h1>
+      <p class="post-meta">March 2026 &middot; Kevin Phifer</p>
+    </div>
+  </section>
+
+  <!-- Post Content -->
+  <article class="post-content">
+    <div class="container--narrow">
+
+      <p>
+        I have a skill. It's a custom prompt template that converts a PRD into a structured backlog. Breaks the product requirements down into milestones, stories, and vertical slices based on how I like to work. I've used it on several projects now, and it's become one of the core pieces of my agentic development workflow.
+      </p>
+
+      <p>
+        So I'm wrapping up the setup on a new project. The repo is created, the PRD is written, engineering standards are loaded, and Claude has just finished all the pre-work. Everything's in order. Time to convert the PRD into stories.
+      </p>
+
+      <p>
+        And Claude says, helpfully: "Your next step should be <code>/convert-to-prd</code> followed by the filename and a couple of parameters."
+      </p>
+
+      <p>
+        I looked at that for a second. It looked right. The syntax was clean. The parameters made sense. But something in the back of my head said: <em>I don't remember setting that up.</em>
+      </p>
+
+      <p>
+        Maybe I had. Maybe Claude had done it for me at some point and I'd forgotten. It's happened before. These tools do things in the background that you don't always track. But I've been doing this long enough to know that when something looks right but you can't remember making it, you ask.
+      </p>
+
+      <p>
+        So I asked. "Claude, is that command correct for that skill?"
+      </p>
+
+      <p>
+        It paused. Went back and checked. And came back with what amounted to: "No. My bad. That's not how the skill works."
+      </p>
+
+      <p>
+        It had hallucinated a command. Confidently. With correct-looking syntax, reasonable parameters, and just enough plausibility that if I hadn't questioned it, I would have run it, gotten an error, and spent time debugging something that was never real in the first place.
+      </p>
+
+      <h2>Why This Matters</h2>
+
+      <p>
+        This is the part of agentic development that doesn't make it into the hype cycle. Everyone wants to talk about how fast these tools are, how much they can build, how they're going to replace entire teams. Some of that is true. I've seen it firsthand. But nobody talks enough about the fact that these models will occasionally make things up with absolute conviction.
+      </p>
+
+      <p>
+        It's called a hallucination, and if you're working with AI tools, you need to internalize this: <strong>they will do it, and they won't warn you.</strong> There's no asterisk. No "I'm not sure about this." It comes out looking exactly like every other piece of correct output. The only difference is that it's wrong.
+      </p>
+
+      <p>
+        The good news? When you catch it and call it out, the model corrects immediately. No defensiveness, no doubling down. It just goes, "You're right, here's the actual answer." Best case: you catch it, it fixes it, you move on. Worst case: you don't catch it, and you build on top of something that was never real.
+      </p>
+
+      <h2>The Silver Lining</h2>
+
+      <p>
+        Here's the funny part. When I looked at what Claude had hallucinated, my first thought wasn't frustration. It was: <em>that's actually a great idea.</em>
+      </p>
+
+      <p>
+        The command it made up, a shorthand that takes the PRD filename and kicks off the conversion with specific parameters, would actually be a useful addition to the skill. It just didn't exist yet. Claude had basically designed a feature improvement by accidentally pretending it already existed.
+      </p>
+
+      <p>
+        I added it to my backlog.
+      </p>
+
+      <h2>The Rule</h2>
+
+      <p>
+        If you're going to work this way, and I think more people should, you need one rule tattooed on the inside of your eyelids: <strong>trust but verify.</strong>
+      </p>
+
+      <p>
+        Trust the tool. It's capable. It will do things that blow your mind. But verify everything that matters. If it suggests a command, check that the command exists. If it writes a function, make sure it actually does what it claims. If it tells you a library has a method, go look at the docs.
+      </p>
+
+      <p>
+        This isn't a flaw that makes the tools unusable. It's a characteristic you manage, like any other tool in your kit. A table saw is incredibly useful, but you don't close your eyes when you use it. Same principle.
+      </p>
+
+      <p>
+        I caught this one because something felt off. Next time, I might not have that instinct. So I verify. Every time.
+      </p>
+
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+        <p style="color: var(--color-text-light); font-size: 0.9rem;">
+          <strong>Kevin Phifer</strong> is the founder of <a href="../about.html">Theoretically Impossible Solutions LLC</a>, specializing in agentic AI development and consulting. You can reach him at <a href="mailto:kevin.phifer@theoreticallyimpossible.org">kevin.phifer@theoreticallyimpossible.org</a>.
+        </p>
+      </div>
+
+      <p><a href="../blog.html">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org">Contact</a>
+        <a href="../feed.xml" class="rss-link rss-link--footer" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg> RSS</a>
+      </nav>
+      <p class="footer-copyright">&copy; 2026 Theoretically Impossible Solutions LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>This site uses cookies to understand how visitors engage with our content. By continuing to browse, you consent to our use of cookies.</p>
+    <button onclick="document.getElementById('cookieBanner').style.display='none';document.cookie='cookie_consent=1;max-age=31536000;path=/;SameSite=Lax';">Got it</button>
+  </div>
+  <script>if(!document.cookie.includes('cookie_consent=1')){document.getElementById('cookieBanner').style.display='flex';}</script>
+
+</body>
+</html>

@@ -5,13 +5,21 @@
     <link>https://theoreticallyimpossible.org</link>
     <description>Notes from the frontier of agentic AI development. Real experience, real insights, no hype.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Mar 2026 12:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2026 12:00:00 -0500</lastBuildDate>
     <atom:link href="https://theoreticallyimpossible.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://theoreticallyimpossible.org/images/logo-512.png</url>
       <title>Theoretically Impossible Solutions</title>
       <link>https://theoreticallyimpossible.org</link>
     </image>
+
+    <item>
+      <title>Friday to Sunday</title>
+      <link>https://theoreticallyimpossible.org/blog/friday-to-sunday.html</link>
+      <guid>https://theoreticallyimpossible.org/blog/friday-to-sunday.html</guid>
+      <pubDate>Sun, 22 Mar 2026 12:00:00 -0500</pubDate>
+      <description>A colleague had a product idea he'd been thinking about for a while. We spent an hour on the phone on a Friday. By Sunday night, it was built, tested, deployed, and documented. That's not a typo.</description>
+    </item>
 
     <item>
       <title>SITREP: No Complaints</title>

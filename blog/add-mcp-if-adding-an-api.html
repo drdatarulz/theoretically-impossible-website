@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SITREP: Add MCP If Adding an API | Theoretically Impossible Solutions</title>
+  <meta name="description" content="Standing in line for Pirates of the Caribbean, I decided to add an MCP server to an app I'd just built. By the time I landed, it was deployed. Here's why every API should have one.">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <meta property="og:title" content="SITREP: Add MCP If Adding an API">
+  <meta property="og:description" content="I added an MCP server to an app from the Pirates of the Caribbean queue and deployed it at 35,000 feet. Every API should have one.">
+  <meta property="og:image" content="https://theoreticallyimpossible.org/images/logo-512.png">
+  <meta property="og:url" content="https://theoreticallyimpossible.org/blog/add-mcp-if-adding-an-api.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://theoreticallyimpossible.org/blog/add-mcp-if-adding-an-api.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ERT6LR74L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3ERT6LR74L');</script>
+  <link rel="alternate" type="application/rss+xml" title="Theoretically Impossible Solutions" href="../feed.xml">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-brand">
+        <img src="../images/logo.png" alt="Theoretically Impossible Solutions logo">
+        <div class="site-brand-text">
+          <span class="site-brand-name">Theoretically Impossible Solutions</span>
+          <span class="site-brand-tagline">Improvise. Adapt. Overcome.</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html" class="active">Blog</a>
+        <a href="../feed.xml" class="rss-link" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg></a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org" class="btn btn--primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Post Header -->
+  <section class="post-header">
+    <div class="container--narrow">
+      <p><span class="sitrep-tag">SITREP</span></p>
+      <h1>Add MCP If Adding an API</h1>
+      <p class="post-meta">March 2026 &middot; Kevin Phifer</p>
+    </div>
+  </section>
+
+  <!-- Post Content -->
+  <article class="post-content">
+    <div class="container--narrow">
+
+      <p>
+        I'm standing in line for Pirates of the Caribbean at Disney World. We're just getting into the queue, and I'm thinking about work. Because of course I am.
+      </p>
+
+      <p>
+        The app I'd built over the weekend was done. Deployed, tested, documented. But the team hadn't really dug into it yet. A couple people had started testing, but it was almost like they'd forgotten what we built or how to use it. I'd created documentation, and I was about to just text them a link to it. But then I had a different thought.
+      </p>
+
+      <p>
+        This is a complex system. It's got an API layer and a client layer, multiple configuration options, a lot of moving parts. What if instead of just pointing people at docs, I added an MCP server? Then anyone using Claude Code or Claude could just talk to the app directly. Ask it questions. Configure it through natural language. No manual required.
+      </p>
+
+      <p>
+        And then, as a next step, that same MCP layer could easily become a chat interface built right into the application. You'd go from "read the docs" to "just ask the app" in one move.
+      </p>
+
+      <h2>From the Queue to the Boat</h2>
+
+      <p>
+        So I'm standing there in the Pirates line, and I pull out my phone. Log into my remote machine. Open up Claude and start talking through the idea. Used my story creation skill to break it down. Claude came back with four or five stories organized into milestones. We went back and forth a little on the scope.
+      </p>
+
+      <p>
+        By the time I was stepping onto the boat, I had kicked it off. Set the VM to implement the code autonomously and put the phone away. Yo ho yo ho, an agentic life for me.
+      </p>
+
+      <h2>35,000 Feet</h2>
+
+      <p>
+        Later that day, we're heading home. I check in at the airport and the build is done. It had finished everything. Coded the MCP server, built the container image, set up the deployment configuration for Azure Container Apps. All of it. The only thing it couldn't do was actually create the Azure Container App resource itself, because that requires portal access it didn't have.
+      </p>
+
+      <p>
+        So I'm sitting on the plane at 35,000 feet, connected to the in-flight Wi-Fi, and I log into Azure on my phone. Stood up the Container App based on everything Claude had already built. Connected it to the image. Hit deploy. Then had Claude recommit the final config, and the whole thing built and deployed while I was in the air.
+      </p>
+
+      <p>
+        From the Pirates of the Caribbean queue to a deployed MCP server at cruising altitude. That's a Monday. Well, it was actually a Sunday, but you get the idea.
+      </p>
+
+      <h2>The Actual Point</h2>
+
+      <p>
+        Here's what stuck with me after the novelty wore off. Any time I build an API for any application, I should just add an MCP server. Every time. No exceptions.
+      </p>
+
+      <p>
+        Why? Because the incremental cost is basically nothing. If the API already exists, the MCP server is just a thin wrapper that exposes those same endpoints to AI models. Claude already knows how to talk to MCP. So does every other tool that supports the protocol. You're not building something new. You're making what you already built accessible in a fundamentally different way.
+      </p>
+
+      <p>
+        Think about what that means. Instead of a user reading docs to figure out how to configure something, they just ask Claude. Claude talks to your MCP server, reads the available endpoints, and either explains how to do it or just does it. Configuration through conversation. Support through conversation. Eventually, you build a chat interface into the app itself and the MCP layer becomes the backend for that too.
+      </p>
+
+      <p>
+        It's like adding a front door to a building that already has all the rooms built. The rooms were there. The hallways were there. You just didn't have a way for people to walk in and ask for directions. MCP is the front door.
+      </p>
+
+      <p>
+        I keep finding these moments where the right answer is "just do it, because it costs nothing." Comments, documentation, tests, and now MCP servers. The list of things that used to be too expensive to bother with keeps getting shorter. Pretty soon there won't be anything left on it.
+      </p>
+
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+        <p style="color: var(--color-text-light); font-size: 0.9rem;">
+          <strong>Kevin Phifer</strong> is the founder of <a href="../about.html">Theoretically Impossible Solutions LLC</a>, specializing in agentic AI development and consulting. You can reach him at <a href="mailto:kevin.phifer@theoreticallyimpossible.org">kevin.phifer@theoreticallyimpossible.org</a>.
+        </p>
+      </div>
+
+      <p><a href="../blog.html">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org">Contact</a>
+        <a href="../feed.xml" class="rss-link rss-link--footer" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg> RSS</a>
+      </nav>
+      <p class="footer-copyright">&copy; 2026 Theoretically Impossible Solutions LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>This site uses cookies to understand how visitors engage with our content. By continuing to browse, you consent to our use of cookies.</p>
+    <button onclick="document.getElementById('cookieBanner').style.display='none';document.cookie='cookie_consent=1;max-age=31536000;path=/;SameSite=Lax';">Got it</button>
+  </div>
+  <script>if(!document.cookie.includes('cookie_consent=1')){document.getElementById('cookieBanner').style.display='flex';}</script>
+
+</body>
+</html>

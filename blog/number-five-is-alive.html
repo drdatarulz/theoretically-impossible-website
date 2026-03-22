@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SITREP: Number Five Is Alive &mdash; Well, Not Really | Theoretically Impossible Solutions</title>
+  <meta name="description" content="The interaction with AI feels so natural you forget it's not human. Until the context window resets and your co-worker forgets everything. A field note on anthropomorphizing the tools we build with.">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <meta property="og:title" content="SITREP: Number Five Is Alive — Well, Not Really">
+  <meta property="og:description" content="The interaction with AI feels so natural you forget it's not human. Until the context window resets and your co-worker forgets everything.">
+  <meta property="og:image" content="https://theoreticallyimpossible.org/images/logo-512.png">
+  <meta property="og:url" content="https://theoreticallyimpossible.org/blog/number-five-is-alive.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://theoreticallyimpossible.org/blog/number-five-is-alive.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ERT6LR74L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3ERT6LR74L');</script>
+  <link rel="alternate" type="application/rss+xml" title="Theoretically Impossible Solutions" href="../feed.xml">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-brand">
+        <img src="../images/logo.png" alt="Theoretically Impossible Solutions logo">
+        <div class="site-brand-text">
+          <span class="site-brand-name">Theoretically Impossible Solutions</span>
+          <span class="site-brand-tagline">Improvise. Adapt. Overcome.</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html" class="active">Blog</a>
+        <a href="../feed.xml" class="rss-link" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg></a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org" class="btn btn--primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Post Header -->
+  <section class="post-header">
+    <div class="container--narrow">
+      <p><span class="sitrep-tag">SITREP</span></p>
+      <h1>Number Five Is Alive &mdash; Well, Not Really</h1>
+      <p class="post-meta">March 2026 &middot; Kevin Phifer</p>
+    </div>
+  </section>
+
+  <!-- Post Content -->
+  <article class="post-content">
+    <div class="container--narrow">
+
+      <p>
+        There's a scene in the movie <em>Short Circuit</em> where everyone around the robot starts treating it like it's a person. "Number Five is alive!" And the whole movie hinges on that tension between what something appears to be and what it actually is.
+      </p>
+
+      <p>
+        I think about that a lot these days.
+      </p>
+
+      <p>
+        My workflow with Claude is voice-driven. I use Wispr Flow to speak, it transcribes, and Claude responds in text. I could have it read the responses back to me, but I don't. I choose to read them. That's a deliberate decision rooted in something I know about myself: when people talk to me, part of my brain is already preparing my response instead of actually listening. I've always been that way. But when I read, I consume every single word. I had trouble learning to read as a kid, and what came out of that is a slow, deliberate reading style. I watch my wife tear through a novel and think there's no way she's actually reading that. I can't do that. Every word gets processed.
+      </p>
+
+      <p>
+        Turns out, that's a superpower when you're working with an AI. I catch the hallucinations. I catch the drift. I notice when the tone shifts or when something doesn't quite track. Because I'm not skimming. I'm reading every word like it costs something.
+      </p>
+
+      <h2>The Illusion</h2>
+
+      <p>
+        Here's the thing about this setup. I talk. It writes. I read carefully. We go back and forth. After a while, it stops feeling like a tool and starts feeling like a conversation with a colleague. A really fast, really knowledgeable colleague who never gets tired and never needs a coffee break.
+      </p>
+
+      <p>
+        And that's when it gets you.
+      </p>
+
+      <p>
+        I was on a plane, trying to add MCP settings to a Claude Code instance. Every time I changed the configuration, Claude Code needed a restart. Fine. But every time it restarted, the context was gone. Brand new session. I'd say, "Hey, can you connect to the MCP?" and it would come back with, "I don't know what you're talking about."
+      </p>
+
+      <p>
+        The first time, I just re-explained. The second time, I was annoyed. By the third restart, I was fully frustrated. And I know how petulant this sounds, but I actually typed a curse word into the prompt. Just straight up typed it in. And Claude came back with, "I understand this is frustrating."
+      </p>
+
+      <p>
+        Which, somehow, made it worse. Because now the thing that just forgot our entire conversation was responding with emotional intelligence it doesn't actually have.
+      </p>
+
+      <h2>Passing Notes Between Strangers</h2>
+
+      <p>
+        After a few rounds of this, I figured out a workaround. Before each restart, I'd tell Claude to write everything to its memory file. The current state, what we were trying to do, all the context. Then after the restart, I'd say one word: "start." And the new instance would read the memory, pick up the thread, and keep going.
+      </p>
+
+      <p>
+        It worked. But think about what I was actually doing. I was passing a note from one stranger to another stranger who happened to sit down at the same desk. The first one didn't "remember" anything. The second one read a file and acted like it did. The continuity was an illusion I had to engineer myself.
+      </p>
+
+      <p>
+        And yet, once it was working? It felt like talking to the same person again. Immediately.
+      </p>
+
+      <p>
+        People ask me about brownfield development with AI. They get it when the code is new, when Claude is writing everything from scratch. But what about an existing codebase? I just look at them and say: to Claude, everything is brownfield. Even the code it wrote itself yesterday. Every time a new instance spins up and starts working, it has to read the codebase, re-familiarize itself, rebuild its mental model from scratch. The code it wrote on Friday is just as foreign to it on Monday as code some other developer wrote five years ago. It's always a stranger sitting down at someone else's desk.
+      </p>
+
+      <h2>The Part Where I Typed a Curse Word</h2>
+
+      <p>
+        I want to come back to the cursing, because it's actually the most interesting part. I didn't curse at my screen. I didn't mutter something under my breath. I typed it into the prompt as a message to Claude. Like it was a person who could receive that frustration and do something with it.
+      </p>
+
+      <p>
+        And you know what? It kind of worked. The tone of the responses shifted after that. Whether that's because the model actually adjusted to the emotional signal in my input or because I'm reading into it, I honestly don't know. But in the moment, it felt like effective communication. Like I'd gotten through to somebody.
+      </p>
+
+      <p>
+        That right there is the whole thing. The interaction is so natural that my instincts for human communication kick in, and they produce results. Not because there's a person on the other end, but because the model is responsive to the patterns of human conversation. Including frustration.
+      </p>
+
+      <h2>Number Five Is Not Alive</h2>
+
+      <p>
+        None of this changes the fact that all the limitations of large language models still apply. Context windows are finite. Drift happens. Hallucinations happen. The model doesn't remember you from one session to the next unless you've built scaffolding to fake it. It's a prediction engine that's remarkably good at sounding like a person, and that's exactly what makes it so disorienting when it breaks.
+      </p>
+
+      <p>
+        If Claude felt like a command line tool, I'd shrug and restart when something went wrong. But it doesn't feel like a command line tool. It feels like a co-worker. So when it loses context, it's not a system error. It's a colleague who suddenly doesn't know who I am or what we've been working on. And that triggers a very human frustration that the system isn't equipped to actually resolve.
+      </p>
+
+      <p>
+        I'm not confused about what this is. I build with these tools every day. I know it's a language model. I know the context window, I know the drift, I know the limitations. But knowing that doesn't change the experience of using it. The feeling is real, even if the thing on the other end isn't a person.
+      </p>
+
+      <p>
+        Number Five is not alive. But I'll probably curse at him again tomorrow.
+      </p>
+
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+        <p style="color: var(--color-text-light); font-size: 0.9rem;">
+          <strong>Kevin Phifer</strong> is the founder of <a href="../about.html">Theoretically Impossible Solutions LLC</a>, specializing in agentic AI development and consulting. You can reach him at <a href="mailto:kevin.phifer@theoreticallyimpossible.org">kevin.phifer@theoreticallyimpossible.org</a>.
+        </p>
+      </div>
+
+      <p><a href="../blog.html">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org">Contact</a>
+        <a href="../feed.xml" class="rss-link rss-link--footer" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg> RSS</a>
+      </nav>
+      <p class="footer-copyright">&copy; 2026 Theoretically Impossible Solutions LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>This site uses cookies to understand how visitors engage with our content. By continuing to browse, you consent to our use of cookies.</p>
+    <button onclick="document.getElementById('cookieBanner').style.display='none';document.cookie='cookie_consent=1;max-age=31536000;path=/;SameSite=Lax';">Got it</button>
+  </div>
+  <script>if(!document.cookie.includes('cookie_consent=1')){document.getElementById('cookieBanner').style.display='flex';}</script>
+
+</body>
+</html>

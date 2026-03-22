@@ -48,7 +48,7 @@
   <section class="post-header">
     <div class="container--narrow">
       <h1>Friday to Sunday</h1>
-      <p class="post-meta">March 2026 &middot; Kevin Phifer</p>
+      <p class="post-meta">March 22, 2026 &middot; Kevin Phifer</p>
     </div>
   </section>
 
@@ -57,7 +57,7 @@
     <div class="container--narrow">
 
       <p>
-        A colleague of mine (call him Berney) had been thinking about a product for a while. He works in insurance and spotted a real problem: carriers don't have a decent way to manage form libraries. Every policy is basically a stack of legal documents. Forms. And which forms attach to which products, in which states, under which conditions? That's incredibly complex. Berney had been sketching out data models and spreadsheets on his own, trying to get the idea into shape.
+        A colleague of mine had been thinking about a product for a while. He works in insurance and had identified a gap in the market, a problem that the industry had been working around for decades but nobody had really solved well. He'd been sketching out architectural designs and use case scenarios on his own, trying to get the idea into shape.
       </p>
 
       <p>
@@ -67,19 +67,19 @@
       <h2>Friday: The Conversation</h2>
 
       <p>
-        We got on a call. Me, Berney, and my buddy Kevin, who's spent years in the industry and knows this problem inside and out. I hit record on Otter and said, "Just talk. Tell me everything. Don't worry about structure or tangents. Just get it out."
+        We got on a call. Me, my colleague, and my buddy Kevin, who's spent years in the same industry and knows the domain inside and out. I hit record on Otter and said, "Just talk. Tell me everything. Don't worry about structure or tangents. Just get it out."
       </p>
 
       <p>
-        And that's what we did. For about an hour, the three of us talked through form inventories, attachment rules, schema definitions, API interactions, product models, and all the edge cases that come with a thirty-year-old industry problem. Berney shared his spreadsheets and data models. Kevin and I drew on our own experience with similar systems. It was the kind of conversation that, in a traditional development shop, would have been the first of about twenty meetings before anyone wrote a line of code.
+        And that's what we did. For about an hour, the three of us talked through the problem space, the business rules, the API interactions, the edge cases. My colleague shared his architectural designs and walked us through the use cases he'd mapped out. Kevin and I drew on our own experience with similar systems. It was the kind of conversation that, in a traditional development shop, would have been the first of about twenty meetings before anyone wrote a line of code.
       </p>
 
       <p>
-        Then came the part that made Berney a little nervous.
+        Then came the part that made him a little nervous.
       </p>
 
       <p>
-        I fed the transcript into Claude and started building the PRD. Product requirements document. Claude asked clarifying questions. Good ones. Specific ones. About twenty-two of them. Around question twelve, Berney asked what I'd been waiting for:
+        I fed the transcript into Claude and started building the PRD. Product requirements document. Claude asked clarifying questions. Good ones. Specific ones. About twenty-two of them. Around question twelve, my colleague asked what I'd been waiting for:
       </p>
 
       <p>
@@ -87,11 +87,11 @@
       </p>
 
       <p>
-        I said no. These questions will end, and they're all pertinent. Every one. Claude wasn't confused. It just didn't want to guess. Was this a carrier-facing tool or an MGA-facing tool? Were the attachment rules pure Boolean or could they involve scripted logic? Did form versioning need to track lineage back to ISO source documents? These were real questions. The kind that, if you skip them, you rebuild half the product three months later.
+        I said no. These questions will end, and they're all pertinent. Every one. Claude wasn't confused. It just didn't want to guess. It was asking about who the users were, what the workflow looked like, how the business rules should be structured, where the data needed to flow. These were real questions. The kind that, if you skip them, you rebuild half the product three months later.
       </p>
 
       <p>
-        By end of Friday, we had a PRD and a structured backlog. Milestones, stories, vertical slices. Berney looked it over and said it was solid. Then came the question: "How long will this take?"
+        By end of Friday, we had a PRD and a structured backlog. Milestones, stories, vertical slices. He looked it over and said it was solid. Then came the question: "How long will this take?"
       </p>
 
       <p>
@@ -109,7 +109,7 @@
       </p>
 
       <p>
-        The first milestone got me the core. Form inventory, basic CRUD, the API layer. I could log in, poke around, see what the thing actually looked like before it got complicated. Pushed it out, set up CI/CD (all through Claude, me directing instead of writing code), ran tests. Then I moved to the next milestone.
+        The first milestone got me the core. The main data structures, basic CRUD operations, the API layer. I could log in, poke around, see what the thing actually looked like before it got complicated. Pushed it out, set up CI/CD (all through Claude, me directing instead of writing code), ran tests. Then I moved to the next milestone.
       </p>
 
       <p>
@@ -127,7 +127,7 @@
       </p>
 
       <p>
-        And we didn't just build it. We built it <em>right</em>. Milestones, tests at each stage, API-first architecture so Berney's clients could integrate programmatically. The kind of structure that takes weeks to argue about in a traditional project before anyone even opens an IDE.
+        And we didn't just build it. We built it <em>right</em>. Milestones, tests at each stage, API-first architecture so his clients could integrate programmatically. The kind of structure that takes weeks to argue about in a traditional project before anyone even opens an IDE.
       </p>
 
       <h2>What Changed</h2>
@@ -137,7 +137,7 @@
       </p>
 
       <p>
-        Berney's idea was solid. It hit a real pain point in an industry where people have been limping along with spreadsheets and legacy systems for decades. Under the old model, hire a team, staff a project, run sprints. The cost to validate this would be six figures minimum. Probably more. The kind of investment that kills most ideas right out of the gate.
+        His idea was solid. It hit a real pain point in an industry where people have been limping along with spreadsheets and legacy systems for decades. Under the old model, hire a team, staff a project, run sprints. The cost to validate this would be six figures minimum. Probably more. The kind of investment that kills most ideas right out of the gate.
       </p>
 
       <p>
@@ -149,7 +149,7 @@
       </p>
 
       <p>
-        I told Berney the email would go out Monday morning. It did. With a URL, login credentials, and full documentation.
+        I told him the email would go out Monday morning. It did. With a URL, login credentials, and full documentation.
       </p>
 
       <p>

@@ -5,13 +5,21 @@
     <link>https://theoreticallyimpossible.org</link>
     <description>Notes from the frontier of agentic AI development. Real experience, real insights, no hype.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 25 Mar 2026 12:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2026 12:00:00 -0500</lastBuildDate>
     <atom:link href="https://theoreticallyimpossible.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://theoreticallyimpossible.org/images/logo-512.png</url>
       <title>Theoretically Impossible Solutions</title>
       <link>https://theoreticallyimpossible.org</link>
     </image>
+
+    <item>
+      <title>SITREP: Number Five Is Alive — Well, Not Really</title>
+      <link>https://theoreticallyimpossible.org/blog/number-five-is-alive.html</link>
+      <guid>https://theoreticallyimpossible.org/blog/number-five-is-alive.html</guid>
+      <pubDate>Sun, 29 Mar 2026 12:00:00 -0500</pubDate>
+      <description>The interaction with AI feels so natural you forget it's not human. Until the context window resets and your co-worker forgets everything. A field note on anthropomorphizing the tools we build with.</description>
+    </item>
 
     <item>
       <title>SITREP: Add MCP If Adding an API</title>

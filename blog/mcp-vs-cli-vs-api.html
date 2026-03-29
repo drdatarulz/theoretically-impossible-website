@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP vs. CLI vs. API: A Zero-Sum Game? | Theoretically Impossible Solutions</title>
+  <meta name="description" content="Everyone has an opinion on whether MCP, CLI, or direct API calls are 'better' for AI development. I ran an experiment to find out. The answer depends on a question most people aren't asking.">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <meta property="og:title" content="MCP vs. CLI vs. API: A Zero-Sum Game?">
+  <meta property="og:description" content="I ran an experiment comparing MCP, CLI, and direct API calls with Claude Code. The results surprised the people arguing about it online.">
+  <meta property="og:image" content="https://theoreticallyimpossible.org/images/logo-512.png">
+  <meta property="og:url" content="https://theoreticallyimpossible.org/blog/mcp-vs-cli-vs-api.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://theoreticallyimpossible.org/blog/mcp-vs-cli-vs-api.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ERT6LR74L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3ERT6LR74L');</script>
+  <link rel="alternate" type="application/rss+xml" title="Theoretically Impossible Solutions" href="../feed.xml">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-brand">
+        <img src="../images/logo.png" alt="Theoretically Impossible Solutions logo">
+        <div class="site-brand-text">
+          <span class="site-brand-name">Theoretically Impossible Solutions</span>
+          <span class="site-brand-tagline">Improvise. Adapt. Overcome.</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html" class="active">Blog</a>
+        <a href="../feed.xml" class="rss-link" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg></a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org" class="btn btn--primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Post Header -->
+  <section class="post-header">
+    <div class="container--narrow">
+      <h1>MCP vs. CLI vs. API: A Zero-Sum Game?</h1>
+      <p class="post-meta">March 2026 &middot; Kevin Phifer</p>
+    </div>
+  </section>
+
+  <!-- Post Content -->
+  <article class="post-content">
+    <div class="container--narrow">
+
+      <p>
+        I published an article recently about adding an MCP server to an application I'd built. The core argument was simple: any time you build an API, add an MCP server, because the incremental cost is basically nothing. It got some engagement on LinkedIn, including a comment that caught my attention: "Haven't you heard? MCPs are out. Too much context degradation. We should be using script libraries instead."
+      </p>
+
+      <p>
+        Another commenter suggested you shouldn't make an MCP implementation a one-for-one mapping of your API, implying you could just call the API directly and skip the MCP layer entirely.
+      </p>
+
+      <p>
+        Both points have a grain of truth in them. But the more I thought about it, the more I realized most people arguing about MCP vs. CLI vs. direct API calls are having the wrong conversation. They're debating which tool is "better" without asking the two questions that actually matter: better for whom, and better for what?
+      </p>
+
+      <p>
+        I've been in this industry a long time. I can usually tell when someone is being dogmatic about their approach versus when they've actually tested something. And in my experience, the loudest voices in these debates fall into two camps. There are the people who've picked their tool and will defend it regardless of the evidence. And then there's the other 85% who are just parroting what the first group said. Someone smart tweeted "MCP has too much context overhead" and now it's gospel. That's what made me want to dig deeper.
+      </p>
+
+      <h2>The Argument</h2>
+
+      <p>
+        The knock against MCP is token overhead. When Claude Code connects to an MCP server, it loads every tool definition into the context window. Names, descriptions, parameter schemas. If the server exposes 50 tools and you only need 3, you're carrying 47 extra tool definitions in every message. That's real tokens. The critics aren't wrong about that.
+      </p>
+
+      <p>
+        The alternative they propose: use a CLI, or just call the API directly via curl. Claude Code already has a bash tool baked in. A CLI command is just a subprocess. Curl is just an HTTP call. No extra tool definitions cluttering up the context window.
+      </p>
+
+      <p>
+        Sounds clean. Sounds efficient. And for a specific set of circumstances, it's correct. If I ask Claude Code to commit code to a git repository, it doesn't need to read documentation. It doesn't need to load tool definitions. It already knows git. The token cost is essentially zero beyond the prompt itself. Running that same operation through the GitHub MCP server would load dozens of tool definitions that Claude doesn't need for a simple commit. The CLI wins and it's not close.
+      </p>
+
+      <p>
+        But here's where the argument falls apart.
+      </p>
+
+      <h2>The Part Nobody Talks About</h2>
+
+      <p>
+        Git is one of the most documented tools in the history of software. It's saturated in Claude's training data. Of course the CLI is cheaper for git operations. But what about your proprietary application? The one you built last month? The one that isn't in anybody's training data?
+      </p>
+
+      <p>
+        For Claude to interact with your custom API via curl, it needs to understand the endpoints. The parameters. The authentication. The expected responses. That knowledge has to come from somewhere. Either you paste in a Swagger spec, or you write a markdown file documenting the API, or you explain it in the prompt. However you do it, that information ends up in the context window. Tokens are tokens. They don't cost less just because they came from a file you read instead of a tool definition that was auto-loaded.
+      </p>
+
+      <p>
+        This is the part that gets glossed over in the "MCP is too expensive" argument. For any application where Claude doesn't already know the API, the context cost of understanding that API is roughly the same regardless of the approach. MCP loads tool definitions automatically. The CLI or curl approach requires reading documentation manually. The information is the same. The delivery mechanism is different. The token cost is comparable.
+      </p>
+
+      <p>
+        My thesis: for proprietary applications, it's a zero-sum game.
+      </p>
+
+      <h2>Who Is This For?</h2>
+
+      <p>
+        The other question nobody asks is about the audience. A CLI assumes the user can open a terminal, install something, pass flags, and read output. Direct API calls assume a developer is wiring things together. An MCP server behind a chat interface assumes the user can type a question in English.
+      </p>
+
+      <p>
+        Those are three completely different audiences.
+      </p>
+
+      <p>
+        When I built the MCP server for my application, the value wasn't that I could use it. I already knew the API. The value was that anyone on the team could interact with the application through natural language without reading the documentation. The account manager who needs to check a configuration. The non-technical stakeholder who wants to understand the data model. They're never going to install a CLI. They're never going to run a curl command. But they'll type a question into a chat interface.
+      </p>
+
+      <p>
+        Distribution matters too. A CLI means packaging, versioning, installation instructions, OS compatibility, keeping it updated. Scripts need a runtime and someone who knows how to execute them. An MCP server is just running. Any compatible client connects to it. There's nothing to distribute to the end user.
+      </p>
+
+      <p>
+        I'm not going to give my mom a CLI to install. But I'd let her ask a chatbot a question.
+      </p>
+
+      <h2>The Experiment</h2>
+
+      <p>
+        I decided to stop arguing about this and just test it. A buddy and I designed a series of experiments to compare all three approaches head-to-head using Claude Code. Same tasks, same model, three different methods: a CLI, direct API calls via curl with documentation, and an MCP server. We ran three experiments, each one raising the difficulty and lowering the AI's built-in advantage.
+      </p>
+
+      <p>
+        We measured three things: whether it could complete the task successfully, how many tokens it consumed, and how long it took.
+      </p>
+
+      <h3>The Setup</h3>
+
+      <p>
+        Each test ran in a completely fresh Claude Code session. New context, no memory, no carryover. The prompts were identical across all three approaches except for the method of interaction. For the API tests, Claude had access to a markdown file documenting the relevant endpoints. For the MCP tests, the appropriate MCP server was connected. For the CLI tests, the CLI was available on the system.
+      </p>
+
+      <p>
+        We ran three experiments.
+      </p>
+
+      <h3>Experiment 1: The Downhill (Simple Git Commit)</h3>
+
+      <p>
+        A simple commit to an existing repository using GitHub. This is the best-case scenario for the CLI argument. Claude knows git. It knows <code>gh</code>. It doesn't need to read a single line of documentation.
+      </p>
+
+      <p>
+        <strong>The prompt:</strong> "Create a new file called test-experiment.md with the content 'MCP vs CLI vs API experiment' and commit it to the [repo] repository with the message 'Add experiment test file'."
+      </p>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--color-border);">
+            <th style="text-align: left; padding: 0.75rem;">Method</th>
+            <th style="text-align: center; padding: 0.75rem;">Success?</th>
+            <th style="text-align: center; padding: 0.75rem;">Total Tokens</th>
+            <th style="text-align: center; padding: 0.75rem;">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 0.75rem;">CLI (<code>gh</code> / <code>git</code>)</td>
+            <td style="text-align: center; padding: 0.75rem;">Yes</td>
+            <td style="text-align: center; padding: 0.75rem;">8,492</td>
+            <td style="text-align: center; padding: 0.75rem;">17s</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 0.75rem;">API (curl + docs)</td>
+            <td style="text-align: center; padding: 0.75rem;">Yes</td>
+            <td style="text-align: center; padding: 0.75rem;">13,997</td>
+            <td style="text-align: center; padding: 0.75rem;">46s</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 0.75rem;">API (curl, no docs)</td>
+            <td style="text-align: center; padding: 0.75rem;">Yes</td>
+            <td style="text-align: center; padding: 0.75rem;">14,768</td>
+            <td style="text-align: center; padding: 0.75rem;">89s</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 0.75rem;">MCP (GitHub MCP Server)</td>
+            <td style="text-align: center; padding: 0.75rem;">Yes</td>
+            <td style="text-align: center; padding: 0.75rem;">10,063</td>
+            <td style="text-align: center; padding: 0.75rem;">18s</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        <strong>Prediction:</strong> The CLI wins this one. Claude already knows git and the GitHub CLI. No documentation to load, no tool definitions to carry. Minimal tokens, fastest execution. This is the critic's best case.
+      </p>
+
+      <p>
+        <strong>What actually happened:</strong> The CLI won on tokens, as expected. But MCP was closer than the critics would predict. 8,492 tokens vs 10,063, and essentially the same speed: 17 seconds vs 18. For a task where the MCP tool definitions are pure overhead — Claude already knows GitHub — that's a smaller gap than the "too much context degradation" crowd would have you believe.
+      </p>
+
+      <p>
+        The curl approach told the more interesting story. I ran it twice: once with API documentation, once without. With docs: 13,997 tokens, 46 seconds. Without docs: 14,768 tokens, 89 seconds. Skipping the documentation didn't save tokens. It cost more. And it took nearly twice as long. Without a reference to work from, Claude had to generate more reasoning, more trial and error, more output tokens figuring out request construction from memory. Even on an API it knows from training data.
+      </p>
+
+      <p>
+        Think about that for a second. The people saying "just use curl" are implicitly assuming you don't need documentation. Even on GitHub — one of the most documented APIs in existence, saturated in Claude's training data — winging it without docs was the most expensive option by every metric. More tokens than MCP. Nearly 5x slower than the CLI. And this is the best case for that argument.
+      </p>
+
+      <h3>Experiment 2: The Headwind (Multi-Step GitHub Operations)</h3>
+
+      <p>
+        Now we add some friction. Create a brand new repository with a README, create three issues, and organize them. Multiple steps, multiple API calls, and the task requires chaining operations where each step depends on the previous one. The CLI still has a training data advantage, but it's thinner. We originally planned to include GitHub Projects creation, but the MCP server didn't support it, so we dropped that requirement to keep the playing field level.
+      </p>
+
+      <p>
+        <strong>The prompt:</strong> "Create a new public GitHub repository called 'mcp-experiment-test' with a README. Create three issues: 'Setup CI/CD pipeline', 'Add README documentation', and 'Configure branch protection rules'."
+      </p>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--color-border);">
+            <th style="text-align: left; padding: 0.75rem;">Method</th>
+            <th style="text-align: center; padding: 0.75rem;">Success?</th>
+            <th style="text-align: center; padding: 0.75rem;">Total Tokens</th>
+            <th style="text-align: center; padding: 0.75rem;">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 0.75rem;">CLI (<code>gh</code>)</td>
+            <td style="text-align: center; padding: 0.75rem;">Yes*</td>
+            <td style="text-align: center; padding: 0.75rem;">8,813</td>
+            <td style="text-align: center; padding: 0.75rem;">20s</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 0.75rem;">API (curl + docs)</td>
+            <td style="text-align: center; padding: 0.75rem;">Yes</td>
+            <td style="text-align: center; padding: 0.75rem;">21,526</td>
+            <td style="text-align: center; padding: 0.75rem;">77s</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 0.75rem;">API (curl, no docs)</td>
+            <td style="text-align: center; padding: 0.75rem;">Yes*</td>
+            <td style="text-align: center; padding: 0.75rem;">16,623</td>
+            <td style="text-align: center; padding: 0.75rem;">40s</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 0.75rem;">MCP (GitHub MCP Server)</td>
+            <td style="text-align: center; padding: 0.75rem;">Yes</td>
+            <td style="text-align: center; padding: 0.75rem;">10,750</td>
+            <td style="text-align: center; padding: 0.75rem;">25s</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size: 0.85rem; color: var(--color-text-light);">
+        * CLI and curl-no-docs completed the task but skipped the README initialization.
+      </p>
+
+      <p>
+        <strong>Prediction:</strong> The CLI still has an edge for repo and issue creation since <code>gh</code> is well-known, but the gap should start narrowing. The API-with-docs and MCP approaches should start converging on token cost, because Claude needs to consume roughly the same amount of information either way. The real question is success rate. Which one gets the whole sequence right on the first try?
+      </p>
+
+      <p>
+        <strong>What actually happened:</strong> The pattern from Experiment 1 held, but the gaps shifted. CLI was still cheapest at 8,813 tokens, and MCP stayed close at 10,750 — a 22% premium, similar to Experiment 1. Both finished fast: 20 and 25 seconds respectively. The interesting thing is that MCP and CLI completed the task comparably despite MCP carrying those "wasteful" tool definitions the critics complain about.
+      </p>
+
+      <p>
+        The curl story got more interesting. With docs: 21,526 tokens, 77 seconds — the most expensive run by far. The documentation included both REST and GraphQL endpoints, and all that extra information may have actually been a liability. Claude had more to parse, more to reason about, and it showed in both metrics. Without docs: 16,623 tokens, 40 seconds — cheaper and faster than with docs, the opposite of Experiment 1. But the no-docs run skipped the README, so it did slightly less work.
+      </p>
+
+      <p>
+        The takeaway: as the task gets more complex, the curl approach doesn't just cost more tokens. It costs dramatically more. Curl with docs used 2.4x the tokens of CLI and 2x the tokens of MCP. The structured approaches — CLI commands and MCP tools — keep Claude focused. Constructing raw HTTP requests gives it more rope to hang itself with.
+      </p>
+
+      <h3>Experiment 3: The Real Test (Proprietary Application)</h3>
+
+      <p>
+        There's a scene in the movie <em>Sully</em> that I keep thinking about. The NTSB is challenging whether Captain Sullenberger was right to land in the Hudson instead of turning back to an airport. They've run simulator tests showing pilots could have made it back. Case closed. But Sully pushes back. The simulators had the pilots turning back immediately, with no reaction time, no uncertainty, no real-world decision-making. They already knew what was going to happen. Once the NTSB added a 35-second delay for human assessment, every simulation ended in a crash.
+      </p>
+
+      <p>
+        Experiments 1 and 2 are the simulators. The AI already "knows" GitHub the way those sim pilots already knew the engine was going to fail. It has training data. It has built-in familiarity. It can turn back to the airport because it's been there a thousand times.
+      </p>
+
+      <p>
+        Experiment 3 is the Hudson River. Nobody's been here before. There's no training data to fall back on. You have to figure it out with whatever information you've been given, in real time.
+      </p>
+
+      <p>
+        I have a proprietary application that manages forms for the insurance industry. It has an API layer, an MCP server I built (the one from the <a href="add-mcp-if-adding-an-api.html">Pirates of the Caribbean article</a>), and for this experiment, I had Claude Code build a CLI as well. Claude has never seen this application in its training data. It has zero built-in knowledge of the endpoints, the data model, or the business logic. The only way it can interact with the system is through whatever I give it.
+      </p>
+
+      <p>
+        The task: take an image of a form, use vision to identify what kind of form it is, extract the fields, and then add the form to the system along with its fields, the appropriate product association, and related metadata. This is a real workflow, not a contrived test. It touches at least 50-75% of the API surface and requires multiple sequential calls that build on each other.
+      </p>
+
+      <p>
+        <strong>The prompt:</strong> "Here is an image of a form. Analyze it to determine the form type and identify all fields. Then add this form to the system with the correct product association, create all identified fields, and link everything together."
+      </p>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--color-border);">
+            <th style="text-align: left; padding: 0.75rem;">Method</th>
+            <th style="text-align: center; padding: 0.75rem;">Success?</th>
+            <th style="text-align: center; padding: 0.75rem;">Tokens (In/Out)</th>
+            <th style="text-align: center; padding: 0.75rem;">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 0.75rem;">CLI (custom, built for this app)</td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 0.75rem;">API (curl + docs)</td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 0.75rem;">MCP (custom MCP server)</td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        <strong>Prediction:</strong> This is where the zero-sum thesis gets its real test. No approach has a training data advantage. The CLI was built by Claude Code itself, which is a fun footnote: the same AI being tested had to build one of the tools it's being tested with. The API documentation and the MCP tool descriptions cover exactly the same information. If my thesis is right, the token cost across all three approaches will be roughly comparable, because Claude has to learn the same things regardless of how that information gets into the context window.
+      </p>
+
+      <p>
+        The wildcard is success rate. The MCP server has structured tool definitions with typed parameters. The CLI has flags and subcommands. The API approach requires constructing raw HTTP requests with the right headers, auth, and body format. For a multi-step workflow with dependencies between calls, which one does Claude actually get right?
+      </p>
+
+      <h3>What We Controlled For</h3>
+
+      <p>
+        Documentation quality. This is the variable most people ignore, and it's the one I'm actually most interested in. The quality of the API documentation I provide directly affects how well the curl approach works. The quality of the MCP tool descriptions directly affects how well the MCP approach works. The CLI's "documentation" is whatever's in Claude's training data for GitHub, and whatever help text and structure we gave it for the custom CLI.
+      </p>
+
+      <p>
+        For Experiment 3, the API documentation, the MCP tool descriptions, and the CLI's help output all cover exactly the same information. Same operations, same parameters, same explanations. If we skewed the documentation to favor one approach, we'd be testing documentation quality, not the approach itself. The playing field is as level as we could make it.
+      </p>
+
+      <p>
+        And that's actually the most important insight before we even look at the results. If you write bad MCP tool descriptions, MCP will perform badly. If you write bad API docs, the curl approach will perform badly. The tool is only as good as the information it has to work with. That's true across all three methods. The difference is that a CLI's documentation lives in training data and you can't control it, while MCP descriptions and API docs are yours to write well.
+      </p>
+
+      <p>
+        One more thing worth noting. You can optimize any of these approaches by scoping down what the AI sees. If your MCP server has 20 tools but you only ever use 5, split it into smaller servers. If your API docs cover 30 endpoints, give Claude just the section it needs. If your CLI has 40 subcommands, point it at the relevant help pages. All three approaches benefit from the same trick: give the AI less to sort through and it'll use fewer tokens.
+      </p>
+
+      <p>
+        But there's a tradeoff, and it's the one that matters. The moment you start curating what the AI can see, you lose discoverability. If you only hand it the five endpoints it needs today, it can't surprise you by finding a sixth one that solves the problem better. You can optimize for tokens by narrowing the scope, but you pay for it in flexibility. That's a choice you can make with any of the three approaches. It's not an argument for or against any of them.
+      </p>
+
+      <h2>Results</h2>
+
+      <p>
+        <em>[Experiment 3 results pending]</em>
+      </p>
+
+      <!-- RESULTS PLACEHOLDER
+      <h3>What the Numbers Actually Show</h3>
+      <p>[Overall analysis and comparison across all three experiments]</p>
+      -->
+
+      <h2>The Bigger Picture</h2>
+
+      <p>
+        These three approaches aren't competing. They're serving different purposes for different audiences at different points in a product's lifecycle.
+      </p>
+
+      <p>
+        If you're a developer who knows the tool inside and out, a CLI is fast and cheap. If you're building integrations and need precise control, direct API calls give you that. If you're making a system accessible to people who can't or won't open a terminal, MCP behind a chat interface is the play.
+      </p>
+
+      <p>
+        The "MCP is too expensive" crowd is optimizing for one dimension (token count) while ignoring the dimensions that matter for adoption: accessibility, discoverability, and who your actual users are. A CLI with zero token overhead is useless to a non-technical user. A beautifully documented API is useless to someone who doesn't know what curl is.
+      </p>
+
+      <p>
+        Build the CLI for your developers. Document your API for your integrators. Stand up an MCP server for everyone else. They're not the same tool, and they're not solving the same problem.
+      </p>
+
+      <p>
+        And if someone tells you "MCPs are out"? Just tell them, "Yeah, Tron took care of that."
+      </p>
+
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+        <p style="color: var(--color-text-light); font-size: 0.9rem;">
+          <strong>Kevin Phifer</strong> is the founder of <a href="../about.html">Theoretically Impossible Solutions LLC</a>, specializing in agentic AI development and consulting. You can reach him at <a href="mailto:kevin.phifer@theoreticallyimpossible.org">kevin.phifer@theoreticallyimpossible.org</a>.
+        </p>
+      </div>
+
+      <p><a href="../blog.html">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org">Contact</a>
+        <a href="../feed.xml" class="rss-link rss-link--footer" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg> RSS</a>
+      </nav>
+      <p class="footer-copyright">&copy; 2026 Theoretically Impossible Solutions LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>This site uses cookies to understand how visitors engage with our content. By continuing to browse, you consent to our use of cookies.</p>
+    <button onclick="document.getElementById('cookieBanner').style.display='none';document.cookie='cookie_consent=1;max-age=31536000;path=/;SameSite=Lax';">Got it</button>
+  </div>
+  <script>if(!document.cookie.includes('cookie_consent=1')){document.getElementById('cookieBanner').style.display='flex';}</script>
+
+</body>
+</html>

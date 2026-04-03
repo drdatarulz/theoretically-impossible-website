@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Multitasking Myth | Theoretically Impossible Solutions</title>
+  <meta name="description" content="Computers don't multitask. They context-switch. Humans are even worse at it. Agentic development doesn't solve this problem — it amplifies it. A field note on finding your limits.">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <meta property="og:title" content="The Multitasking Myth">
+  <meta property="og:description" content="Computers don't multitask. They context-switch. Humans are even worse at it. Agentic development doesn't solve this — it amplifies it.">
+  <meta property="og:image" content="https://theoreticallyimpossible.org/images/logo-512.png">
+  <meta property="og:url" content="https://theoreticallyimpossible.org/blog/the-multitasking-myth.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://theoreticallyimpossible.org/blog/the-multitasking-myth.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ERT6LR74L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3ERT6LR74L');</script>
+  <link rel="alternate" type="application/rss+xml" title="Theoretically Impossible Solutions" href="../feed.xml">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-brand">
+        <img src="../images/logo.png" alt="Theoretically Impossible Solutions logo">
+        <div class="site-brand-text">
+          <span class="site-brand-name">Theoretically Impossible Solutions</span>
+          <span class="site-brand-tagline">Improvise. Adapt. Overcome.</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html" class="active">Blog</a>
+        <a href="../feed.xml" class="rss-link" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg></a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org" class="btn btn--primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Post Header -->
+  <section class="post-header">
+    <div class="container--narrow">
+      <h1>The Multitasking Myth</h1>
+      <p class="post-meta">April 2026 &middot; Kevin Phifer</p>
+    </div>
+  </section>
+
+  <!-- Post Content -->
+  <article class="post-content">
+    <div class="container--narrow">
+
+      <p>
+        I've never believed in multitasking. Not for humans. And here's what most people don't realize: not even for computers.
+      </p>
+
+      <p>
+        A CPU doesn't do five things at once. It does a little bit of one thing, saves its place, picks up the next thing, does a little bit of that, saves its place, picks up the next. Context switching. The processor works on a thread, stores its state — registers, stack pointer, program counter — swaps in the next thread's state, and picks up where that one left off. On a single core, only one thread is ever executing at any given instant. Multiple cores give you actual parallelism, but even then each core is still context-switching between more threads than it can run simultaneously.
+      </p>
+
+      <p>
+        What makes this work in computing is two things. First, the switching is essentially perfect. The CPU doesn't lose information when it saves state. It doesn't accidentally carry over data from one thread into another. Memory is isolated. The context is preserved exactly as it was. Second, it's blindingly fast. A context switch takes microseconds. The overhead exists, and OS engineers spend careers minimizing it, but to a human observer it looks instantaneous. It looks like multitasking.
+      </p>
+
+      <p>
+        Humans have neither of these advantages.
+      </p>
+
+      <h2>The Human Version</h2>
+
+      <p>
+        When you switch from writing code to answering an email to reviewing a pull request, you don't save state perfectly. You lose things. The variable name you were about to type. The architectural concern you were holding in your head. The thread of logic you'd been building for the last twenty minutes. It doesn't get stored in a register somewhere. It evaporates. And when you switch back, you have to rebuild it. Sometimes from scratch.
+      </p>
+
+      <p>
+        The research is pretty clear on this. The American Psychological Association has documented what they call "task-switch costs" — the measurable productivity loss that comes from switching between tasks. Studies consistently put it at 20 to 40 percent of productive time. Not 2 percent. Not 5 percent. A quarter to nearly half of your working time, gone. Not because you're lazy, but because your brain doesn't have memory isolation. Context from one task bleeds into another. The rebuild time is real and it compounds.
+      </p>
+
+      <p>
+        I've known this about myself for thirty years. If I have five tasks and I try to work on three of them in parallel, it takes me longer to finish all three than it would've taken to do them one at a time. And the quality is worse. We all know multitasking is a myth. We just keep doing it anyway because it feels productive.
+      </p>
+
+      <h2>The Multiplier</h2>
+
+      <p>
+        Here's where agentic development makes this interesting, and not in a good way. I'm working in Claude Code on a task. It's churning away — reading files, writing code, running tests. While it's doing its thing, I have a thought. There's this other task I've been meaning to get to. And the agent is going to be busy for a few minutes anyway. So I open another terminal window, spin up another Claude Code instance, and start a second task. That one gets going, and I think of a third thing. Open another window. For instance, I started writing this article while I was publishing my last article, while I was waiting on Claude to finish making changes to the draft of my upcoming presentation. Three tasks, three windows, one brain. And I didn't even notice I was doing it until I was already deep in all three.
+      </p>
+
+      <p>
+        For about five minutes, this feels like a superpower.
+      </p>
+
+      <p>
+        Then they all start finishing at the same time.
+      </p>
+
+      <p>
+        One agent needs a decision about an API design. Another wants me to review a test that's failing. The third is asking a clarifying question about requirements. And my phone rings — someone wants to talk through a deployment. So now I'm switching between three agent outputs that each require genuine evaluation, while trying to have an intelligent conversation with a human being.
+      </p>
+
+      <p>
+        Anybody who's talked to me during one of these moments knows exactly what it looks like. They'll pause mid-sentence and say something like, "I'm just waiting for you to pay attention to me again." And they're right. I'm not paying attention to them. I'm not really paying attention to any of the three agents either. I'm doing the human equivalent of a context switch every fifteen seconds, and losing state every single time.
+      </p>
+
+      <h2>The Bottleneck Moved</h2>
+
+      <p>
+        This is the part that took me a while to see clearly. In traditional development, the bottleneck was production. Writing the code, running the tests, doing the deploy. That was the slow part. Thinking about it — the architecture, the design decisions, the code review — that was relatively fast because you did it in the gaps while waiting for the slow part.
+      </p>
+
+      <p>
+        Agentic development flipped that. Production is now the fast part. The agent writes code, runs tests, and iterates faster than I can read what it's doing. The bottleneck moved to evaluation. Reviewing what the agent built. Deciding if the approach is right. Catching the subtle architectural mistake that the tests won't flag. That's the part that requires my full, undivided attention. And that's exactly the part that gets destroyed by multitasking.
+      </p>
+
+      <p>
+        When I'm bouncing between three agent windows, I'm not doing the one thing that actually matters: thinking carefully about what each one produced. I'm skimming. I'm approving things I should be questioning. I'm missing the thing that'll cost me two hours to fix later because I didn't spend two minutes looking at it now.
+      </p>
+
+      <h2>Finding the Line</h2>
+
+      <p>
+        I've had to figure out where my limit is. Everyone's going to find their own sweet spot, but here's mine: it breaks the moment I need to talk to another person or apply critical thinking.
+      </p>
+
+      <p>
+        Two agents running on tasks that are mechanical and independent — one deploying, one running a migration — that's fine. I can glance at each output, confirm it looks right, and move on. The context-switch cost is low because neither task requires deep thought.
+      </p>
+
+      <p>
+        But the second one of those agents is doing something that requires my judgment — designing an API, making architectural decisions, writing code that touches business logic — I need to be there for it. Fully there. Not "I'll check in when it finishes" there. Because by the time it finishes, it's made forty decisions I should've been watching, and I'm about to rubber-stamp all of them because I've got two other windows blinking at me.
+      </p>
+
+      <p>
+        And deployments? I just said deployments are fine to run in parallel, and as the words formed in my head I thought, "Yeah, that's not smart either." Because the one time something goes wrong in a deploy is exactly the time you need to not be distracted by two other things.
+      </p>
+
+      <h2>The Discipline</h2>
+
+      <p>
+        The temptation is real and constant. Agentic development creates dead time that feels wasteful. The agent is working, you're watching, and your brain screams at you to go do something else. Every instinct you have as an engineer — efficiency, throughput, utilization — tells you to spin up another task.
+      </p>
+
+      <p>
+        But the dead time isn't dead. It's the time when you're maintaining context. Staying in the problem. Keeping the state loaded so that when the agent comes back with a result, you can evaluate it with the full picture in your head. The moment you walk away from that to start something else, you've paid the context-switch tax, and you'll pay it again when you come back.
+      </p>
+
+      <p>
+        The irony is thick. We borrowed "multitasking" from computers, applied it to ourselves, and it was always a lie. Now we have AI agents that can actually do work in parallel, and the thing that limits them is the same thing that always limited us: the human in the loop can only genuinely focus on one thing at a time.
+      </p>
+
+      <p>
+        Context switching has a cost. It had a cost when it was just us, and it has a cost now that we have agents. The only difference is the scale of the mistake when we ignore it.
+      </p>
+
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+        <p style="color: var(--color-text-light); font-size: 0.9rem;">
+          <strong>Kevin Phifer</strong> is the founder of <a href="../about.html">Theoretically Impossible Solutions LLC</a>, specializing in agentic AI development and consulting. You can reach him at <a href="mailto:kevin.phifer@theoreticallyimpossible.org">kevin.phifer@theoreticallyimpossible.org</a>.
+        </p>
+      </div>
+
+      <p><a href="../blog.html">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org">Contact</a>
+        <a href="../feed.xml" class="rss-link rss-link--footer" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg> RSS</a>
+      </nav>
+      <p class="footer-copyright">&copy; 2026 Theoretically Impossible Solutions LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>This site uses cookies to understand how visitors engage with our content. By continuing to browse, you consent to our use of cookies.</p>
+    <button onclick="document.getElementById('cookieBanner').style.display='none';document.cookie='cookie_consent=1;max-age=31536000;path=/;SameSite=Lax';">Got it</button>
+  </div>
+  <script>if(!document.cookie.includes('cookie_consent=1')){document.getElementById('cookieBanner').style.display='flex';}</script>
+
+</body>
+</html>

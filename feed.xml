@@ -5,13 +5,21 @@
     <link>https://theoreticallyimpossible.org</link>
     <description>Notes from the frontier of agentic AI development. Real experience, real insights, no hype.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Apr 2026 12:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 05 Apr 2026 12:00:00 -0500</lastBuildDate>
     <atom:link href="https://theoreticallyimpossible.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://theoreticallyimpossible.org/images/logo-512.png</url>
       <title>Theoretically Impossible Solutions</title>
       <link>https://theoreticallyimpossible.org</link>
     </image>
+
+    <item>
+      <title>SITREP: Claude Hallucinations, or: How I Learned to Stop Worrying and Trust But Verify</title>
+      <link>https://theoreticallyimpossible.org/blog/trust-but-verify.html</link>
+      <guid>https://theoreticallyimpossible.org/blog/trust-but-verify.html</guid>
+      <pubDate>Sun, 05 Apr 2026 12:00:00 -0500</pubDate>
+      <description>Claude confidently suggested a command that didn't exist. It looked right, it felt right, and it was completely made up. But hype is hype, whether positive or negative — and if you know to check, you can catch it.</description>
+    </item>
 
     <item>
       <title>SITREP: Old Misconceptions, New Reality</title>

@@ -61,15 +61,15 @@
       </p>
 
       <p>
-        Another commenter made a different point, and a good one: don't just make your MCP implementation a one-for-one mapping of your API. Actually think about what makes it useful. That's solid advice and worth adding to the playbook.
+        Another commenter suggested you shouldn't make an MCP implementation a one-for-one mapping of your API, implying you could just call the API directly and skip the MCP layer entirely.
       </p>
 
       <p>
-        But the first comment stuck with me. "MCPs are out." And the more I thought about it, the more I realized most people arguing about MCP vs. CLI vs. direct API calls are having the wrong conversation. They're debating which approach is "better" without asking the two questions that actually matter: better for whom, and better for what?
+        Both points have a grain of truth in them. But the more I thought about it, the more I realized most people arguing about MCP vs. CLI vs. direct API calls are having the wrong conversation. They're debating which tool is "better" without asking the two questions that actually matter: better for whom, and better for what?
       </p>
 
       <p>
-        I've been in this industry a long time. I can usually tell when someone is being dogmatic about their approach versus when they've actually tested something. And in my experience, maybe 1% of the people in these debates have actually done the work, run the experiments, and are simply choosing what they think is best based on what they found. Another 14% are dogmatic about their choice and loud about defending it. The remaining 85% are just parroting their favorite person from that 15%. Someone smart tweeted "MCP has too much context overhead" and now it's gospel. That's what made me want to dig deeper.
+        I've been in this industry a long time. I can usually tell when someone is being dogmatic about their approach versus when they've actually tested something. And in my experience, the loudest voices in these debates fall into two camps. There are the people who've picked their tool and will defend it regardless of the evidence. And then there's the other 85% who are just parroting what the first group said. Someone smart tweeted "MCP has too much context overhead" and now it's gospel. That's what made me want to dig deeper.
       </p>
 
       <h2>The Argument</h2>
@@ -83,7 +83,7 @@
       </p>
 
       <p>
-        Sounds clean and efficient. And for a specific set of circumstances, it's correct. If I ask Claude Code to commit code to a git repository, it doesn't need documentation or tool definitions. It already knows git. The token cost is essentially zero beyond the prompt itself. Running that same operation through the GitHub MCP server would load dozens of tool definitions that Claude doesn't need for a simple commit. The CLI wins and it's not close.
+        Sounds clean. Sounds efficient. And for a specific set of circumstances, it's correct. If I ask Claude Code to commit code to a git repository, it doesn't need to read documentation. It doesn't need to load tool definitions. It already knows git. The token cost is essentially zero beyond the prompt itself. Running that same operation through the GitHub MCP server would load dozens of tool definitions that Claude doesn't need for a simple commit. The CLI wins and it's not close.
       </p>
 
       <p>
@@ -97,11 +97,11 @@
       </p>
 
       <p>
-        For Claude to interact with your custom API via curl, it needs to understand the endpoints, the parameters, how to authenticate, what the responses look like. That knowledge has to come from somewhere. You can paste in a Swagger spec, write a markdown file documenting the API, or just explain it in the prompt. However you do it, that information ends up in the context window. Tokens are tokens. They don't cost less just because they came from a file you read instead of a tool definition that was auto-loaded.
+        For Claude to interact with your custom API via curl, it needs to understand the endpoints. The parameters. The authentication. The expected responses. That knowledge has to come from somewhere. Either you paste in a Swagger spec, or you write a markdown file documenting the API, or you explain it in the prompt. However you do it, that information ends up in the context window. Tokens are tokens. They don't cost less just because they came from a file you read instead of a tool definition that was auto-loaded.
       </p>
 
       <p>
-        This is the part that gets glossed over in the "MCP is too expensive" argument. For any application where Claude doesn't already know the API, the context cost of understanding that API is roughly the same regardless of the approach. MCP loads tool definitions automatically, and the CLI or curl approach requires reading documentation manually, but the information going into the context window is the same either way. The token cost is comparable.
+        This is the part that gets glossed over in the "MCP is too expensive" argument. For any application where Claude doesn't already know the API, the context cost of understanding that API is roughly the same regardless of the approach. MCP loads tool definitions automatically. The CLI or curl approach requires reading documentation manually. The information is the same. The delivery mechanism is different. The token cost is comparable.
       </p>
 
       <p>
@@ -111,11 +111,15 @@
       <h2>Who Is This For?</h2>
 
       <p>
-        The other question nobody asks is about the audience. A CLI assumes the user can open a terminal, install something, pass flags, and read output. Direct API calls assume a developer is wiring things together. An MCP server behind a chat interface? That just assumes the user can type a question in English. Those are three completely different audiences.
+        The other question nobody asks is about the audience. A CLI assumes the user can open a terminal, install something, pass flags, and read output. Direct API calls assume a developer is wiring things together. An MCP server behind a chat interface assumes the user can type a question in English.
       </p>
 
       <p>
-        When I built the MCP server for my application, the value wasn't that I could use it. I already knew the API. The value was that anyone on the team could interact with the application through natural language without reading the documentation. The account manager who needs to check a configuration, the non-technical stakeholder who wants to understand the data model. Those people are never going to install a CLI or run a curl command. But they'll type a question into a chat interface.
+        Those are three completely different audiences.
+      </p>
+
+      <p>
+        When I built the MCP server for my application, the value wasn't that I could use it. I already knew the API. The value was that anyone on the team could interact with the application through natural language without reading the documentation. The account manager who needs to check a configuration. The non-technical stakeholder who wants to understand the data model. They're never going to install a CLI. They're never going to run a curl command. But they'll type a question into a chat interface.
       </p>
 
       <p>
@@ -129,17 +133,21 @@
       <h2>The Experiment</h2>
 
       <p>
-        I decided to stop arguing about this and just test it. A buddy and I designed a couple of experiments to compare all three approaches head-to-head using Claude Code. Same tasks, same model, three different methods: a CLI, direct API calls via curl with documentation, and an MCP server. Each experiment raised the difficulty and lowered the AI's built-in advantage.
+        I decided to stop arguing about this and just test it. A buddy and I designed a series of experiments to compare all three approaches head-to-head using Claude Code. Same tasks, same model, three different methods: a CLI, direct API calls via curl with documentation, and an MCP server. We ran three experiments, each one raising the difficulty and lowering the AI's built-in advantage.
       </p>
 
       <p>
-        We measured whether it could complete the task successfully, how many tokens it consumed, and how long it took.
+        We measured three things: whether it could complete the task successfully, how many tokens it consumed, and how long it took.
       </p>
 
       <h3>The Setup</h3>
 
       <p>
         Each test ran in a completely fresh Claude Code session. New context, no memory, no carryover. The prompts were identical across all three approaches except for the method of interaction. For the API tests, Claude had access to a markdown file documenting the relevant endpoints. For the MCP tests, the appropriate MCP server was connected. For the CLI tests, the CLI was available on the system.
+      </p>
+
+      <p>
+        We ran three experiments.
       </p>
 
       <h3>Experiment 1: The Downhill (Simple Git Commit)</h3>
@@ -194,11 +202,11 @@
       </p>
 
       <p>
-        <strong>What actually happened:</strong> The CLI won on tokens, as expected. 8,492 tokens vs 10,063 for MCP, roughly a 15% savings, and essentially the same speed (17 seconds vs 18). That 15% is worth acknowledging. At scale, in a development process where you're running hundreds of these operations, that adds up. If your use case is something the AI already knows cold, CLI is the right call and the numbers back it up. But for a task where the MCP tool definitions are pure overhead, where Claude already knows GitHub, it's also a smaller gap than the "too much context degradation" crowd would have you believe.
+        <strong>What actually happened:</strong> The CLI won on tokens, as expected. But MCP was closer than the critics would predict. 8,492 tokens vs 10,063, and essentially the same speed: 17 seconds vs 18. For a task where the MCP tool definitions are pure overhead — Claude already knows GitHub — that's a smaller gap than the "too much context degradation" crowd would have you believe.
       </p>
 
       <p>
-        The curl approach told the more interesting story. I ran it twice, once with API documentation and once without. With docs it came in at 13,997 tokens and 46 seconds. Without docs, 14,768 tokens and 89 seconds. Skipping the documentation didn't save tokens. It cost more, and it took nearly twice as long. Without a reference to work from, Claude had to generate more reasoning, more trial and error, more output tokens figuring out request construction from memory. Even on an API it knows from training data.
+        The curl approach told the more interesting story. I ran it twice: once with API documentation, once without. With docs: 13,997 tokens, 46 seconds. Without docs: 14,768 tokens, 89 seconds. Skipping the documentation didn't save tokens. It cost more. And it took nearly twice as long. Without a reference to work from, Claude had to generate more reasoning, more trial and error, more output tokens figuring out request construction from memory. Even on an API it knows from training data.
       </p>
 
       <p>
@@ -261,38 +269,114 @@
       </p>
 
       <p>
-        <strong>What actually happened:</strong> The pattern from Experiment 1 held, but the gaps shifted. CLI was still cheapest at 8,813 tokens, and MCP stayed close at 10,750, about a 22% premium, similar to the first experiment. Both finished fast (20 and 25 seconds). MCP and CLI completed the task comparably, even with MCP carrying those "wasteful" tool definitions the critics complain about.
+        <strong>What actually happened:</strong> The pattern from Experiment 1 held, but the gaps shifted. CLI was still cheapest at 8,813 tokens, and MCP stayed close at 10,750 — a 22% premium, similar to Experiment 1. Both finished fast: 20 and 25 seconds respectively. The interesting thing is that MCP and CLI completed the task comparably despite MCP carrying those "wasteful" tool definitions the critics complain about.
       </p>
 
       <p>
-        The curl story got more interesting. With docs it hit 21,526 tokens and 77 seconds, the most expensive run by far. The documentation included both REST and GraphQL endpoints, and all that extra information may have actually been a liability. Claude had more to parse and more to reason about, and it showed in both metrics. Without docs it came in at 16,623 tokens and 40 seconds, cheaper and faster than with docs, which was the opposite of the first experiment. But the no-docs run skipped the README, so it did slightly less work.
+        The curl story got more interesting. With docs: 21,526 tokens, 77 seconds — the most expensive run by far. The documentation included both REST and GraphQL endpoints, and all that extra information may have actually been a liability. Claude had more to parse, more to reason about, and it showed in both metrics. Without docs: 16,623 tokens, 40 seconds — cheaper and faster than with docs, the opposite of Experiment 1. But the no-docs run skipped the README, so it did slightly less work.
       </p>
 
       <p>
-        The takeaway is that as the task gets more complex, the curl approach doesn't just cost more tokens. It costs dramatically more. Curl with docs used 2.4x the tokens of CLI and 2x the tokens of MCP. The structured approaches, CLI commands and MCP tools, keep Claude focused. Constructing raw HTTP requests gives it more rope to hang itself with.
+        The takeaway: as the task gets more complex, the curl approach doesn't just cost more tokens. It costs dramatically more. Curl with docs used 2.4x the tokens of CLI and 2x the tokens of MCP. The structured approaches — CLI commands and MCP tools — keep Claude focused. Constructing raw HTTP requests gives it more rope to hang itself with.
       </p>
 
-      <h2>The Variable Nobody Talks About</h2>
+      <h3>Experiment 3: The Real Test (Proprietary Application)</h3>
 
       <p>
-        A friend of mine was convinced that CLI was better than MCP. He had evidence. He'd been working with Playwright and watched the CLI outperform the MCP server on similar tasks. Case closed, right?
-      </p>
-
-      <p>
-        I hadn't compared the two myself, but based on my own experiments, I told him I'd bet they were just written differently by different people. He pushed back. "It's from one company. Same team." And maybe it is. But in larger enterprises, that's rarely how it works. The team that built the CLI and the team that built the MCP server were probably not the same developers. One of them may have just been the B-team. He wasn't measuring CLI vs. MCP. He was measuring one team's implementation against another's.
+        There's a scene in the movie <em>Sully</em> that I keep thinking about. The NTSB is challenging whether Captain Sullenberger was right to land in the Hudson instead of turning back to an airport. They've run simulator tests showing pilots could have made it back. Case closed. But Sully pushes back. The simulators had the pilots turning back immediately, with no reaction time, no uncertainty, no real-world decision-making. They already knew what was going to happen. Once the NTSB added a 35-second delay for human assessment, every simulation ended in a crash.
       </p>
 
       <p>
-        That's the variable most people skip right over in this debate, and it matters more than the choice of approach. Your API documentation directly affects how well curl works. Your MCP tool descriptions directly affect how well MCP works. Bad descriptions, bad results. The AI is only as good as the information it has to work with, and that's true regardless of which delivery mechanism you pick.
+        Experiments 1 and 2 are the simulators. The AI already "knows" GitHub the way those sim pilots already knew the engine was going to fail. It has training data. It has built-in familiarity. It can turn back to the airport because it's been there a thousand times.
       </p>
 
       <p>
-        We saw this in our own data. In Experiment 1, curl without documentation was the most expensive option by every metric, even on GitHub, one of the most saturated APIs in Claude's training data. Skipping the docs didn't save anything. It cost more tokens and nearly 5x the time. The information has to come from somewhere. The question isn't whether you pay for it, but whether you pay for it through structured tool definitions, a documentation file, or the model guessing its way through trial and error.
+        Experiment 3 is the Hudson River. Nobody's been here before. There's no training data to fall back on. You have to figure it out with whatever information you've been given, in real time.
       </p>
 
       <p>
-        You can also optimize any of these approaches by scoping down what the AI sees. If your MCP server has 20 tools but you only ever use 5, split it into smaller servers. If your API docs cover 30 endpoints, give Claude just the section it needs. All three approaches benefit from the same trick: give the AI less to sort through and it'll use fewer tokens. But there's a tradeoff. The moment you start curating what the AI can see, you lose discoverability. If you only hand it the five endpoints it needs today, it can't surprise you by finding a sixth one that solves the problem better. That's a choice you can make with any of the three approaches. It's not an argument for or against any of them.
+        I have a proprietary application that manages forms for the insurance industry. It has an API layer, an MCP server I built (the one from the <a href="add-mcp-if-adding-an-api.html">Pirates of the Caribbean article</a>), and for this experiment, I had Claude Code build a CLI as well. Claude has never seen this application in its training data. It has zero built-in knowledge of the endpoints, the data model, or the business logic. The only way it can interact with the system is through whatever I give it.
       </p>
+
+      <p>
+        The task: take an image of a form, use vision to identify what kind of form it is, extract the fields, and then add the form to the system along with its fields, the appropriate product association, and related metadata. This is a real workflow, not a contrived test. It touches at least 50-75% of the API surface and requires multiple sequential calls that build on each other.
+      </p>
+
+      <p>
+        <strong>The prompt:</strong> "Here is an image of a form. Analyze it to determine the form type and identify all fields. Then add this form to the system with the correct product association, create all identified fields, and link everything together."
+      </p>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--color-border);">
+            <th style="text-align: left; padding: 0.75rem;">Method</th>
+            <th style="text-align: center; padding: 0.75rem;">Success?</th>
+            <th style="text-align: center; padding: 0.75rem;">Tokens (In/Out)</th>
+            <th style="text-align: center; padding: 0.75rem;">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 0.75rem;">CLI (custom, built for this app)</td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 0.75rem;">API (curl + docs)</td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 0.75rem;">MCP (custom MCP server)</td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+            <td style="text-align: center; padding: 0.75rem;"><em>[pending]</em></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        <strong>Prediction:</strong> This is where the zero-sum thesis gets its real test. No approach has a training data advantage. The CLI was built by Claude Code itself, which is a fun footnote: the same AI being tested had to build one of the tools it's being tested with. The API documentation and the MCP tool descriptions cover exactly the same information. If my thesis is right, the token cost across all three approaches will be roughly comparable, because Claude has to learn the same things regardless of how that information gets into the context window.
+      </p>
+
+      <p>
+        The wildcard is success rate. The MCP server has structured tool definitions with typed parameters. The CLI has flags and subcommands. The API approach requires constructing raw HTTP requests with the right headers, auth, and body format. For a multi-step workflow with dependencies between calls, which one does Claude actually get right?
+      </p>
+
+      <h3>What We Controlled For</h3>
+
+      <p>
+        Documentation quality. This is the variable most people ignore, and it's the one I'm actually most interested in. The quality of the API documentation I provide directly affects how well the curl approach works. The quality of the MCP tool descriptions directly affects how well the MCP approach works. The CLI's "documentation" is whatever's in Claude's training data for GitHub, and whatever help text and structure we gave it for the custom CLI.
+      </p>
+
+      <p>
+        For Experiment 3, the API documentation, the MCP tool descriptions, and the CLI's help output all cover exactly the same information. Same operations, same parameters, same explanations. If we skewed the documentation to favor one approach, we'd be testing documentation quality, not the approach itself. The playing field is as level as we could make it.
+      </p>
+
+      <p>
+        And that's actually the most important insight before we even look at the results. If you write bad MCP tool descriptions, MCP will perform badly. If you write bad API docs, the curl approach will perform badly. The tool is only as good as the information it has to work with. That's true across all three methods. The difference is that a CLI's documentation lives in training data and you can't control it, while MCP descriptions and API docs are yours to write well.
+      </p>
+
+      <p>
+        One more thing worth noting. You can optimize any of these approaches by scoping down what the AI sees. If your MCP server has 20 tools but you only ever use 5, split it into smaller servers. If your API docs cover 30 endpoints, give Claude just the section it needs. If your CLI has 40 subcommands, point it at the relevant help pages. All three approaches benefit from the same trick: give the AI less to sort through and it'll use fewer tokens.
+      </p>
+
+      <p>
+        But there's a tradeoff, and it's the one that matters. The moment you start curating what the AI can see, you lose discoverability. If you only hand it the five endpoints it needs today, it can't surprise you by finding a sixth one that solves the problem better. You can optimize for tokens by narrowing the scope, but you pay for it in flexibility. That's a choice you can make with any of the three approaches. It's not an argument for or against any of them.
+      </p>
+
+      <h2>Results</h2>
+
+      <p>
+        <em>[Experiment 3 results pending]</em>
+      </p>
+
+      <!-- RESULTS PLACEHOLDER
+      <h3>What the Numbers Actually Show</h3>
+      <p>[Overall analysis and comparison across all three experiments]</p>
+      -->
 
       <h2>The Bigger Picture</h2>
 
@@ -301,19 +385,19 @@
       </p>
 
       <p>
-        A developer who knows the tool inside and out is going to reach for a CLI, and it'll be fast and cheap. Someone building integrations who needs precise control is going to call the API directly. But if you're making a system accessible to people who can't or won't open a terminal, MCP behind a chat interface is the play.
+        If you're a developer who knows the tool inside and out, a CLI is fast and cheap. If you're building integrations and need precise control, direct API calls give you that. If you're making a system accessible to people who can't or won't open a terminal, MCP behind a chat interface is the play.
       </p>
 
       <p>
-        The "MCP is too expensive" crowd is optimizing for one dimension, token count, while ignoring the dimensions that matter for adoption: accessibility, discoverability, and who your actual users are. Your CLI with zero token overhead doesn't help the account manager who needs to check a configuration. Your beautifully documented API doesn't help someone who doesn't know what curl is.
+        The "MCP is too expensive" crowd is optimizing for one dimension (token count) while ignoring the dimensions that matter for adoption: accessibility, discoverability, and who your actual users are. A CLI with zero token overhead is useless to a non-technical user. A beautifully documented API is useless to someone who doesn't know what curl is.
       </p>
 
       <p>
-        Build the CLI for your developers, document your API for your integrators, and stand up an MCP server for everyone else. They're not the same tool, and they're not solving the same problem.
+        Build the CLI for your developers. Document your API for your integrators. Stand up an MCP server for everyone else. They're not the same tool, and they're not solving the same problem.
       </p>
 
       <p>
-        And if a "parrot" tells you MCP is dead? Just tell them, "Yeah, Tron took care of that."
+        And if someone tells you "MCPs are out"? Just tell them, "Yeah, Tron took care of that."
       </p>
 
       <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">

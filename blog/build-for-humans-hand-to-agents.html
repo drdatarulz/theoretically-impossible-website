@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SITREP: Build for Humans, Hand to Agents | Theoretically Impossible Solutions</title>
+  <meta name="description" content="Should you build software for AI agents or for humans first? The answer is practical, not philosophical. Human-readable interfaces are what give models the patterns they need to work.">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <meta property="og:title" content="SITREP: Build for Humans, Hand to Agents">
+  <meta property="og:description" content="Should you build software for AI agents or for humans first? The answer is practical, not philosophical.">
+  <meta property="og:image" content="https://theoreticallyimpossible.org/images/logo-512.png">
+  <meta property="og:url" content="https://theoreticallyimpossible.org/blog/build-for-humans-hand-to-agents.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://theoreticallyimpossible.org/blog/build-for-humans-hand-to-agents.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ERT6LR74L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3ERT6LR74L');</script>
+  <link rel="alternate" type="application/rss+xml" title="Theoretically Impossible Solutions" href="../feed.xml">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-brand">
+        <img src="../images/logo.png" alt="Theoretically Impossible Solutions logo">
+        <div class="site-brand-text">
+          <span class="site-brand-name">Theoretically Impossible Solutions</span>
+          <span class="site-brand-tagline">Improvise. Adapt. Overcome.</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html" class="active">Blog</a>
+        <a href="../feed.xml" class="rss-link" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg></a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org" class="btn btn--primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Post Header -->
+  <section class="post-header">
+    <div class="container--narrow">
+      <p><span class="sitrep-tag">SITREP</span></p>
+      <h1>Build for Humans, Hand to Agents</h1>
+      <p class="post-meta"><span class="post-date">April 2026</span> &middot; Kevin Phifer</p>
+    </div>
+  </section>
+
+  <!-- Post Content -->
+  <article class="post-content">
+    <div class="container--narrow">
+
+      <p>
+        My business partner and I had a disagreement last week. We're building some software together. I handle engineering. He handles testing and product ownership, making sure the software actually does what it's supposed to do. Normal setup, plenty of overlap, and we were bound to butt heads eventually.
+      </p>
+
+      <p>
+        The disagreement was about how to build it. He wanted the AI driving the workflow directly, end to end, no human in the middle. I wanted to build it so a human can use it first. Get the interface right, get the workflow right, make sure a person can sit down and actually operate the thing. Then hand it to the agent.
+      </p>
+
+      <p>
+        He might be right eventually. I'll say that up front. But I don't think he's right today, and the reason is more practical than it sounds.
+      </p>
+
+      <h2>The Pattern Problem</h2>
+
+      <p>
+        A few weeks ago I was exploring an idea about building a programming language designed specifically for AI. Not for humans to read, but optimized for how models process instructions. We pulled on that thread for a while, and it got interesting. Claude came back and told me: I write code based on all the code I've trained on. If you hand me a language nobody has ever used, I have no patterns to apply. I can't infer anything from something I've never seen.
+      </p>
+
+      <p>
+        That stuck with me, because it connects right back to what my partner and I were arguing about. But the more I thought about it, the more I realized the point isn't really about whether the model has seen your specific software. It almost certainly hasn't. The point is whether you described your software using language and structures the model has seen. That's a different thing entirely.
+      </p>
+
+      <p>
+        If you build something completely novel but you document it with clear endpoint names, plain English descriptions of what each function does, and well-structured parameters that say what they mean, the model can work with that. It doesn't need to have seen your application before. It just needs to understand how you explained it. And human-readable description is the medium these models think in. It's the actual layer the inference runs on.
+      </p>
+
+      <p>
+        Where it breaks down is when you skip that layer. If you build a workflow that only an agent has ever touched, with no human-readable documentation because no human was ever meant to use it, the model has less signal to work with. There's no description written by a frustrated developer at 2 AM, no Stack Overflow answers, no GitHub issues where someone hit the exact edge case you're about to hit. The model can still try, and it might get it right. But there's a real difference between recognizing a pattern and guessing at one, and it shows up in the output.
+      </p>
+
+      <h2>Why Human-Readable Isn't Just for Humans</h2>
+
+      <p>
+        REST APIs are a good example of why this matters. The verbs are GET, POST, PUT, DELETE. The endpoints read like sentences. The documentation explains what each call does and why, in plain English. When you hand a well-documented REST API to Claude, it doesn't need special training. It's read millions of API docs. It already knows what a 404 means, and it knows that a POST to /users probably creates a user. You get inference almost for free because the whole thing was designed to be understood by humans.
+      </p>
+
+      <p>
+        MCP works the same way. You describe your tools in natural language, explain what the parameters mean, and the model figures out when and how to call them. It works because the description layer is just words. Words the model has seen thousands of times before, in training data written by and for people.
+      </p>
+
+      <p>
+        And if you look at the history of API design, the whole trajectory has been toward making things more human-readable. Binary protocols became text-based ones. SOAP gave way to REST. Cryptic error codes got replaced with actual messages that told you what went wrong. Every one of those changes made life easier for developers, and it turns out they also made life easier for AI. If a junior developer can learn your interface by reading the docs, a language model can infer how to use it the same way.
+      </p>
+
+      <h2>The Practical Payoff</h2>
+
+      <p>
+        So what does this look like in practice? You build the software so a human can use it. You get the workflow right. You test it with a person sitting in the chair, clicking the buttons, filling in the forms, catching the places where the process falls apart. Now you know two things: the software works because a human verified it, and you have an interface built on patterns the model already understands.
+      </p>
+
+      <p>
+        Then you expose it. A clean API with good documentation, MCP tool descriptions that explain what each function does, well-named endpoints that describe their purpose. The agent picks it up and runs with it. Not because you built something special for AI, but because you built something clear for humans, and that clarity is what the model actually uses.
+      </p>
+
+      <p>
+        My partner's approach would skip the human step entirely. And honestly, the agent could probably drive the workflow. These models are capable enough. But you lose the ability to sit someone down and say "use this, tell me where it breaks." And the further your interface drifts from human-readable patterns, the less reliable the model's inference becomes. It doesn't hit a wall and stop working. You just get gradually less confidence and more guessing, and that shows up in ways that are hard to debug because you never had a human baseline to compare against.
+      </p>
+
+      <h2>When This Might Flip</h2>
+
+      <p>
+        I said at the top that my partner might eventually be right, and I meant it. The reason my approach works today is that models are trained overwhelmingly on human-generated content. All that code, all that documentation, all those conversations about software, all of it was produced by and for people. That's the whole pattern base.
+      </p>
+
+      <p>
+        But training data evolves. As more agent-to-agent interactions happen and more AI-native interfaces get built and documented, those become patterns too. At some point the training data might include enough examples of AI-first design that a model can reason about a novel agent interface the way it currently reasons about a REST API. I don't think we're there yet. I don't think we're close. But I can see the road.
+      </p>
+
+      <p>
+        For now, I'm going to keep building software that a human can sit down and use, documenting it like a person will read it, and then handing it to the agent. The agent will understand it for the same reason the human did. You used real words, described real workflows, and the model had enough to go on. That's the whole trick, and it's not really a trick at all. It's just good software engineering that happens to age well.
+      </p>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Theoretically Impossible Solutions LLC. All rights reserved.</p>
+      <p><a href="../feed.xml">RSS Feed</a></p>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1a1a2e;color:#fff;padding:0.75rem 1.5rem;font-size:0.85rem;z-index:9999;text-align:center;">
+    This site uses cookies (Google Analytics) to understand how visitors use the site.
+    <button onclick="document.getElementById('cookie-consent').style.display='none';document.cookie='cookie_consent=dismissed;max-age=31536000;path=/'" style="background:#00d4ff;color:#1a1a2e;border:none;padding:0.35rem 1rem;margin-left:1rem;border-radius:4px;cursor:pointer;font-size:0.85rem;">Got it</button>
+  </div>
+  <script>if(!document.cookie.includes('cookie_consent=dismissed')){document.getElementById('cookie-consent').style.display='block';}</script>
+
+</body>
+</html>

@@ -5,13 +5,21 @@
     <link>https://theoreticallyimpossible.org</link>
     <description>Notes from the frontier of agentic AI development. Real experience, real insights, no hype.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Apr 2026 12:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 13 Apr 2026 12:00:00 -0500</lastBuildDate>
     <atom:link href="https://theoreticallyimpossible.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://theoreticallyimpossible.org/images/logo-512.png</url>
       <title>Theoretically Impossible Solutions</title>
       <link>https://theoreticallyimpossible.org</link>
     </image>
+
+    <item>
+      <title>SITREP: Your AI Thinks You're Special</title>
+      <link>https://theoreticallyimpossible.org/blog/your-ai-thinks-youre-special.html</link>
+      <guid>https://theoreticallyimpossible.org/blog/your-ai-thinks-youre-special.html</guid>
+      <pubDate>Mon, 13 Apr 2026 12:00:00 -0500</pubDate>
+      <description>Your AI assistant thinks everything you do is brilliant. That's not collaboration. It's a participation trophy. And if you don't recognize it, you end up announcing table stakes like it's a revolution.</description>
+    </item>
 
     <item>
       <title>The Multitasking Myth</title>

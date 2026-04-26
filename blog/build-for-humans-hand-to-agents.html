@@ -129,23 +129,37 @@
         For now, I'm going to keep building software that a human can sit down and use, documenting it like a person will read it, and then handing it to the agent. The agent will understand it for the same reason the human did. You used real words, described real workflows, and the model had enough to go on. That's the whole trick, and it's not really a trick at all. It's just good software engineering that happens to age well.
       </p>
 
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+        <p style="color: var(--color-text-light); font-size: 0.9rem;">
+          <strong>Kevin Phifer</strong> is the founder of <a href="../about.html">Theoretically Impossible Solutions LLC</a>, specializing in agentic AI development and consulting. You can reach him at <a href="mailto:kevin.phifer@theoreticallyimpossible.org">kevin.phifer@theoreticallyimpossible.org</a>.
+        </p>
+      </div>
+
+      <p><a href="../blog.html">&larr; Back to Blog</a></p>
+
     </div>
   </article>
 
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; 2026 Theoretically Impossible Solutions LLC. All rights reserved.</p>
-      <p><a href="../feed.xml">RSS Feed</a></p>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org">Contact</a>
+        <a href="../feed.xml" class="rss-link rss-link--footer" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg> RSS</a>
+      </nav>
+      <p class="footer-copyright">&copy; 2026 Theoretically Impossible Solutions LLC. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1a1a2e;color:#fff;padding:0.75rem 1.5rem;font-size:0.85rem;z-index:9999;text-align:center;">
-    This site uses cookies (Google Analytics) to understand how visitors use the site.
-    <button onclick="document.getElementById('cookie-consent').style.display='none';document.cookie='cookie_consent=dismissed;max-age=31536000;path=/'" style="background:#00d4ff;color:#1a1a2e;border:none;padding:0.35rem 1rem;margin-left:1rem;border-radius:4px;cursor:pointer;font-size:0.85rem;">Got it</button>
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>This site uses cookies to understand how visitors engage with our content. By continuing to browse, you consent to our use of cookies.</p>
+    <button onclick="document.getElementById('cookieBanner').style.display='none';document.cookie='cookie_consent=1;max-age=31536000;path=/;SameSite=Lax';">Got it</button>
   </div>
-  <script>if(!document.cookie.includes('cookie_consent=dismissed')){document.getElementById('cookie-consent').style.display='block';}</script>
+  <script>if(!document.cookie.includes('cookie_consent=1')){document.getElementById('cookieBanner').style.display='flex';}</script>
 
 </body>
 </html>

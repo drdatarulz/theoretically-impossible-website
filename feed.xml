@@ -5,13 +5,21 @@
     <link>https://theoreticallyimpossible.org</link>
     <description>Notes from the frontier of agentic AI development. Real experience, real insights, no hype.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Apr 2026 12:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 26 Apr 2026 12:00:00 -0500</lastBuildDate>
     <atom:link href="https://theoreticallyimpossible.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://theoreticallyimpossible.org/images/logo-512.png</url>
       <title>Theoretically Impossible Solutions</title>
       <link>https://theoreticallyimpossible.org</link>
     </image>
+
+    <item>
+      <title>SITREP: No One Reads the Warnings</title>
+      <link>https://theoreticallyimpossible.org/blog/no-one-reads-the-warnings.html</link>
+      <guid>https://theoreticallyimpossible.org/blog/no-one-reads-the-warnings.html</guid>
+      <pubDate>Sun, 26 Apr 2026 12:00:00 -0500</pubDate>
+      <description>A question from the room at a live demo opened up a gap in my agentic pipeline I'd walked past for weeks. Advisories work because a human reads them. Pull the human out and they don't get ignored — they get unread.</description>
+    </item>
 
     <item>
       <title>SITREP: Build for Humans, Hand to Agents</title>

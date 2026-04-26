@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SITREP: No One Reads the Warnings | Theoretically Impossible Solutions</title>
+  <meta name="description" content="Presenting agentic development to a room of devs surfaced a gap I'd been walking past for weeks. Advisories work because a human reads them. Take the human out and they don't get ignored — they get unread.">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <meta property="og:title" content="SITREP: No One Reads the Warnings">
+  <meta property="og:description" content="Presenting agentic development to a room of devs surfaced a gap I'd been walking past for weeks. Advisories work because a human reads them. Take the human out and they don't get ignored — they get unread.">
+  <meta property="og:image" content="https://theoreticallyimpossible.org/images/logo-512.png">
+  <meta property="og:url" content="https://theoreticallyimpossible.org/blog/no-one-reads-the-warnings.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://theoreticallyimpossible.org/blog/no-one-reads-the-warnings.html">
+  <!-- Google Analytics - replace G-3ERT6LR74L with your GA4 Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ERT6LR74L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3ERT6LR74L');</script>
+  <link rel="alternate" type="application/rss+xml" title="Theoretically Impossible Solutions" href="../feed.xml">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-brand">
+        <img src="../images/logo.png" alt="Theoretically Impossible Solutions logo">
+        <div class="site-brand-text">
+          <span class="site-brand-name">Theoretically Impossible Solutions</span>
+          <span class="site-brand-tagline">Improvise. Adapt. Overcome.</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html" class="active">Blog</a>
+        <a href="../feed.xml" class="rss-link" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg></a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org" class="btn btn--primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Post Header -->
+  <section class="post-header">
+    <div class="container--narrow">
+      <p><span class="sitrep-tag">SITREP</span></p>
+      <h1>No One Reads the Warnings</h1>
+      <p class="post-meta"><span class="post-date">April 26, 2026</span> &middot; Kevin Phifer</p>
+    </div>
+  </section>
+
+  <!-- Post Content -->
+  <article class="post-content">
+    <div class="container--narrow">
+
+      <p>
+        I gave a talk this past week &mdash; first time I've stood in front of a room of developers. We did a live demo end to end, building a new codebase in front of them.
+      </p>
+
+      <p>
+        Somewhere in the middle, somebody asked about security. What does the agent do when a scan flags something? I walked them through it. My process auto-fixes anything the scanner returns as critical or high in flight. Medium and low get emitted as advisories.
+      </p>
+
+      <p>
+        And as I'm saying that out loud, I can hear the gap forming. In a normal development process, an advisory has an audience. It's a polite tap on the shoulder for a human engineer: "hey, this might be worth looking at, but I'm not going to block your build over it." Mediums and lows are explicitly designed as judgment calls. The whole point of the tier is that it isn't an obligation. It's a note. But in a 100% agentic flow, there's nobody at the desk to read the note.
+      </p>
+
+      <p>
+        The advisories don't get ignored. Ignored implies somebody read them and decided to move on. They get <em>unread</em>. They land in a log, the agent finishes the ticket, the next ticket starts. Nothing fails. Nothing escalates. The work looks complete because, by the rules of the pipeline, it is. The slice of the process built to delegate to human judgment just quietly evaporates. That's not a security bug &mdash; it's a hole in the philosophy.
+      </p>
+
+      <h2>Beyond Security</h2>
+
+      <p>
+        Once you see it in security, you start seeing it everywhere. Code review nits. Design review suggestions. Perf hints from the profiler. Accessibility warnings the linter throws but doesn't fail on. Every traditional process is full of these "FYI" tiers, and they were always written for a human reader making a judgment call. Pure agentic flow drops that whole layer. Nothing breaks loudly. The process just degrades by the slice that was supposed to delegate, and that slice is often where the quality lives.
+      </p>
+
+      <p>
+        I went around on it for a while. Three options came up.
+      </p>
+
+      <p>
+        One: sweep at the end of each session or milestone. Let the advisories accumulate, then run a triage pass when the work's done. Downside is the agent's context on the original change is already cooling off by the time you get there.
+      </p>
+
+      <p>
+        Two: raise the bar. Treat mediums like highs and auto-fix them in flight. You give up the "judgment call" framing entirely &mdash; the agent doesn't get to decide, it just acts.
+      </p>
+
+      <p>
+        Three: spin up a cleanup ticket the orchestrator picks up later. Treat advisories like a queue, let an agent work through it.
+      </p>
+
+      <p>
+        I went with two. Auto-fix the mediums.
+      </p>
+
+      <p>
+        The reasoning is simple. If we're going to fix it, it belongs in the session. The cleanup-ticket route might feel more efficient &mdash; smaller PRs, an agent that specializes on cleanup &mdash; but it doesn't actually solve anything. A queue of advisories without a reader is just a different log file. The judgment was supposed to live with the change, not in a backlog somebody might or might not get to.
+      </p>
+
+      <p>
+        I'll probably try the cleanup variant later just to compare. For now the default is fix-it-now, in the same session that produced the advisory.
+      </p>
+
+      <p>
+        I wouldn't have surfaced any of this if I hadn't presented it, by the way. The gap was sitting in a pipeline I'd built and run dozens of times, and I missed it. It took a room of strangers asking the obvious question. Which is the other thing I kept coming back to during that talk: your experience as the developer running these agents matters more now, not less.
+      </p>
+
+      <p>
+        When you pull the human out of a process, you don't just lose hands. You lose the reader the warnings were written for. Every advisory, every FYI, every "you might want to consider" was addressed to somebody. The fix isn't to add the human back. The fix is to stop emitting advisories and decide ahead of time what the agents are required to act on. If it isn't required, it doesn't belong in the pipeline.
+      </p>
+
+      <p>
+        Which puts the weight back on you. All the judgment that used to be distributed across code reviewers, security engineers, the senior dev who notices the perf hint &mdash; all of it has to come out of the person designing the pipeline, upstream, before the agents run. Your experience as a developer is what tells you which advisories were always going to matter and which ones never did. There's no inbox catching what you miss downstream. There is no downstream.
+      </p>
+
+      <p>
+        In pure agentic flow, "advisory" is just a polite word for ignored.
+      </p>
+
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+        <p style="color: var(--color-text-light); font-size: 0.9rem;">
+          <strong>Kevin Phifer</strong> is the founder of <a href="../about.html">Theoretically Impossible Solutions LLC</a>, specializing in agentic AI development and consulting. You can reach him at <a href="mailto:kevin.phifer@theoreticallyimpossible.org">kevin.phifer@theoreticallyimpossible.org</a>.
+        </p>
+      </div>
+
+      <p><a href="../blog.html">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org">Contact</a>
+        <a href="../feed.xml" class="rss-link rss-link--footer" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg> RSS</a>
+      </nav>
+      <p class="footer-copyright">&copy; 2026 Theoretically Impossible Solutions LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>This site uses cookies to understand how visitors engage with our content. By continuing to browse, you consent to our use of cookies.</p>
+    <button onclick="document.getElementById('cookieBanner').style.display='none';document.cookie='cookie_consent=1;max-age=31536000;path=/;SameSite=Lax';">Got it</button>
+  </div>
+  <script>if(!document.cookie.includes('cookie_consent=1')){document.getElementById('cookieBanner').style.display='flex';}</script>
+
+</body>
+</html>

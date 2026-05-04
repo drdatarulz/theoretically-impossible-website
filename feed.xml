@@ -5,13 +5,21 @@
     <link>https://theoreticallyimpossible.org</link>
     <description>Notes from the frontier of agentic AI development. Real experience, real insights, no hype.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 Apr 2026 12:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2026 12:00:00 -0500</lastBuildDate>
     <atom:link href="https://theoreticallyimpossible.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://theoreticallyimpossible.org/images/logo-512.png</url>
       <title>Theoretically Impossible Solutions</title>
       <link>https://theoreticallyimpossible.org</link>
     </image>
+
+    <item>
+      <title>Claude Rides Shotgun</title>
+      <link>https://theoreticallyimpossible.org/blog/claude-rides-shotgun.html</link>
+      <guid>https://theoreticallyimpossible.org/blog/claude-rides-shotgun.html</guid>
+      <pubDate>Sun, 03 May 2026 12:00:00 -0500</pubDate>
+      <description>Almost everything I've written has Claude in the driver's seat. But Claude can be just as useful in a support role — the expert on the phone while you're standing under the hood.</description>
+    </item>
 
     <item>
       <title>SITREP: No One Reads the Warnings</title>

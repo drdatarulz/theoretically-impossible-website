@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Rides Shotgun | Theoretically Impossible Solutions</title>
+  <meta name="description" content="Almost everything I've written has Claude in the driver's seat. This one is the inversion — when I'm at the controls and Claude is riding shotgun. A field story from Unity, Blender, and the part of agentic work nobody is talking about.">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <meta property="og:title" content="Claude Rides Shotgun">
+  <meta property="og:description" content="Almost everything I've written has Claude in the driver's seat. This one is the inversion — when I'm at the controls and Claude is riding shotgun.">
+  <meta property="og:image" content="https://theoreticallyimpossible.org/images/logo-512.png">
+  <meta property="og:url" content="https://theoreticallyimpossible.org/blog/claude-rides-shotgun.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://theoreticallyimpossible.org/blog/claude-rides-shotgun.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ERT6LR74L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3ERT6LR74L');</script>
+  <link rel="alternate" type="application/rss+xml" title="Theoretically Impossible Solutions" href="../feed.xml">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-brand">
+        <img src="../images/logo.png" alt="Theoretically Impossible Solutions logo">
+        <div class="site-brand-text">
+          <span class="site-brand-name">Theoretically Impossible Solutions</span>
+          <span class="site-brand-tagline">Improvise. Adapt. Overcome.</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html" class="active">Blog</a>
+        <a href="../feed.xml" class="rss-link" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg></a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org" class="btn btn--primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Post Header -->
+  <section class="post-header">
+    <div class="container--narrow">
+      <h1>Claude Rides Shotgun</h1>
+      <p class="post-meta"><span class="post-date">May 3, 2026</span> &middot; Kevin Phifer</p>
+    </div>
+  </section>
+
+  <!-- Post Content -->
+  <article class="post-content">
+    <div class="container--narrow">
+
+      <p>
+        Almost everything I've written about Claude has Claude in the driver's seat. The agent picks up a task, runs it end to end, asks the occasional question, and the human stays mostly out of the way. But Claude can be just as useful in a support role.
+      </p>
+
+      <h2>The Haunted House</h2>
+
+      <p>
+        I've been working on a VR prototype. It's a haunted house experience that our church used to put on. We did it for years until COVID shut it down. After that, we started talking about doing a virtual version &mdash; fully immersive, the kind of thing you'd experience in a headset. But it just never came together. So when I had a little money to throw at it, I outsourced the first pass to a network resource. They did a good job. Got me a starting point. But there was a lot of detail work left, and in VR, detail is the whole game. It's the difference between a tech demo and something that actually puts a knot in your stomach.
+      </p>
+
+      <p>
+        So I picked it up myself. There's a solid MCP interface for Unity, so I got the server running, attached Claude Code, and off we went.
+      </p>
+
+      <p>
+        I knew what I wanted. I didn't know how to do it.
+      </p>
+
+      <p>
+        There's a scene where the player is sitting in the back seat of a car as it rolls down a street. You're looking over the passenger's shoulder, watching houses go by. To get the sightlines right &mdash; so you can actually see what's coming &mdash; we had to lift the camera up a little. But lift it enough and the camera clips through the roof of the car. At certain angles, you're sitting in the back seat looking out the world's worst sunroof.
+      </p>
+
+      <p>
+        I had a thought. Put a cube around where the player's head is. If they look up, they see black. Looks like the inside of a car roof. Problem solved.
+      </p>
+
+      <p>
+        I told Claude. And, as Claude often does, it told me this was the greatest idea anyone had ever had. I would never have thought of something so clever. Truly remarkable. (If you've used Claude for more than a week, you know the routine. I've <a href="your-ai-thinks-youre-special.html">written about this</a>.)
+      </p>
+
+      <p>
+        So after the flattery session, it goes to work. First thing it does is make a cube bigger than the car itself. So we start going back and forth. I tell it that's way too big. It explains that you can't put a shader on the inside of a single cube and have it render the way you need &mdash; when your head is inside it, you just see nothing. So I suggest building the box out of individual planes instead. Great idea, it says. Of course it does. It builds it, and this time we're closer.
+      </p>
+
+      <p>
+        Then we hit the fine-tuning, and the whole thing slowed to a crawl.
+      </p>
+
+      <p>
+        Claude can get screenshots. It can look at a frame and reason about what's in it. But it can't see the way I can see &mdash; in real time, with my head moving, with the spatial sense of being <em>in</em> the scene. The loop was too long. I'd ask for a tweak, wait, get a screenshot back, look at it, ask for another tweak, wait. Meanwhile I could see the problem instantly with my own eyes. What needed to happen was obvious to me. But the communication overhead of getting Claude to understand what I was seeing was murdering the iteration speed.
+      </p>
+
+      <p>
+        So I took the controls. I told Claude I was going to make the changes myself. And then I asked the question I'd end up asking about a hundred more times that day: <em>how do I do this in Unity?</em>
+      </p>
+
+      <p>
+        That's where it lit up. Not the do-everything mode. The teaching mode. Where do I find this menu? What's this property called? Why is it doing <em>this</em> when I do <em>that</em>? Claude has read more Unity documentation than any human ever will. I had the eye and the hands. It had the manual. We made better progress in twenty minutes than we'd made in the previous two hours.
+      </p>
+
+      <h2>Same Pattern, Different Tool</h2>
+
+      <p>
+        A few days later I needed a baby bassinet model. Couldn't find one that fit. I'd never built anything in Blender from scratch, but there's a good MCP server for Blender too. So I installed it, hooked it up, and said: make me a baby bassinet.
+      </p>
+
+      <p>
+        Claude went to work. It did the heavy lifting &mdash; the geometry, the rough proportions, getting something on the screen. And then the same thing happened. The fine-tuning was where the eye mattered. I could see in a second what was wrong. Telling Claude what was wrong, waiting for it to make the change, looking at the result, telling it again &mdash; too slow. So I took the controls. And again, the same question on a loop: <em>how do I do this in Blender?</em>
+      </p>
+
+      <p>
+        Two different tools. Two different domains. Same exact pattern. I knew what I wanted. I didn't know how to do it. Claude did.
+      </p>
+
+      <h2>The Expert on the Phone</h2>
+
+      <p>
+        Here's the thing that was different about this. In my normal agentic workflow, Claude does the work. I hand it a task, point it at the engineering standards, and let it go. It writes the code, runs the tests, handles the iteration. I'm mostly staying out of the way. That's the mode I write about the most, because that's where the results look like magic.
+      </p>
+
+      <p>
+        But the VR work wasn't that. Claude was still doing most of the heavy lifting &mdash; it built the cube, it built the planes, it generated the bassinet geometry. It was doing the work. Until it hit a wall. And the wall was the same both times: it couldn't see what I was seeing, not fast enough, not in real time, not the way you need to when you're adjusting visual details by feel. It could do the rough work, but the fine work needed eyes it didn't have.
+      </p>
+
+      <p>
+        So when I took over, I didn't become the expert. I became the hands. Claude was the expert who couldn't reach the controls. It's like having the best mechanic you've ever met on the phone while you're standing under the hood. You can see the problem. You can reach the part. But you don't know what it's called, you don't know which way to turn it, and you definitely don't know why the thing next to it is making that noise. The mechanic does. They can't see what you're looking at, but they've worked on a thousand of these, and when you describe what you're seeing, they know exactly what to tell you.
+      </p>
+
+      <p>
+        That's what Claude became in those sessions. The person who'd been there before and could talk me through it while I had my hands on the thing.
+      </p>
+
+      <h2>Knowing When to Switch</h2>
+
+      <p>
+        Everyone wants to know what AI can do. Can it write code? Can it build a 3D model? Can it edit video? Those are fine questions, but they're the wrong ones. The better question is: <em>when should I let it do the work, and when should I do the work and let it guide me?</em>
+      </p>
+
+      <p>
+        With code, Claude can usually own the whole thing. It's seen a million REST APIs. It knows what they look like, knows how to build one. Give it the task and get out of the way.
+      </p>
+
+      <p>
+        But with visual work &mdash; anything where spatial awareness matters, where the eye is faster than any screenshot, where "I'll know it when I see it" is the actual specification &mdash; that's where you step in. Claude knows how. It just can't see what you're seeing fast enough to iterate at the speed the work demands. So you take the controls, and you ask it how, and it tells you.
+      </p>
+
+      <p>
+        I started that afternoon with Claude doing the work in Unity and ended it with me doing the work in Unity. Same project, same session. We just found the spot where the work needed a different arrangement, and we shifted. Knowing when to let it run, and knowing when to pick up the wrench and say, <em>okay, talk me through this</em> &mdash; that's the skill.
+      </p>
+
+      <p>
+        I knew what I wanted. I didn't know how to do it. That used to be the most frustrating sentence in the business. With the right partner on the line, it might be the best one.
+      </p>
+
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+        <p style="color: var(--color-text-light); font-size: 0.9rem;">
+          <strong>Kevin Phifer</strong> is the founder of <a href="../about.html">Theoretically Impossible Solutions LLC</a>, specializing in agentic AI development and consulting. You can reach him at <a href="mailto:kevin.phifer@theoreticallyimpossible.org">kevin.phifer@theoreticallyimpossible.org</a>.
+        </p>
+      </div>
+
+      <p><a href="../blog.html">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org">Contact</a>
+        <a href="../feed.xml" class="rss-link rss-link--footer" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg> RSS</a>
+      </nav>
+      <p class="footer-copyright">&copy; 2026 Theoretically Impossible Solutions LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>This site uses cookies to understand how visitors engage with our content. By continuing to browse, you consent to our use of cookies.</p>
+    <button onclick="document.getElementById('cookieBanner').style.display='none';document.cookie='cookie_consent=1;max-age=31536000;path=/;SameSite=Lax';">Got it</button>
+  </div>
+  <script>if(!document.cookie.includes('cookie_consent=1')){document.getElementById('cookieBanner').style.display='flex';}</script>
+
+</body>
+</html>

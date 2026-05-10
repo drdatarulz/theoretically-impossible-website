@@ -5,13 +5,21 @@
     <link>https://theoreticallyimpossible.org</link>
     <description>Notes from the frontier of agentic AI development. Real experience, real insights, no hype.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 May 2026 12:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 10 May 2026 12:00:00 -0500</lastBuildDate>
     <atom:link href="https://theoreticallyimpossible.org/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://theoreticallyimpossible.org/images/logo-512.png</url>
       <title>Theoretically Impossible Solutions</title>
       <link>https://theoreticallyimpossible.org</link>
     </image>
+
+    <item>
+      <title>SITREP: Same Name, Different Person</title>
+      <link>https://theoreticallyimpossible.org/blog/same-name-different-person.html</link>
+      <guid>https://theoreticallyimpossible.org/blog/same-name-different-person.html</guid>
+      <pubDate>Sun, 10 May 2026 12:00:00 -0500</pubDate>
+      <description>I upgraded from Opus 4.6 to 4.7 without thinking twice. It was like talking to a completely different person. A field report on what happens when you assume a new model version will just work.</description>
+    </item>
 
     <item>
       <title>Claude Rides Shotgun</title>

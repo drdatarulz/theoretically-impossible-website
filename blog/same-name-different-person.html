@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SITREP: Same Name, Different Person | Theoretically Impossible Solutions</title>
+  <meta name="description" content="I upgraded from Opus 4.6 to 4.7 without thinking twice. It was like talking to a completely different person. A field report on what happens when you assume a new model version will just work.">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <meta property="og:title" content="SITREP: Same Name, Different Person">
+  <meta property="og:description" content="I upgraded from Opus 4.6 to 4.7 without thinking twice. It was like talking to a completely different person.">
+  <meta property="og:image" content="https://theoreticallyimpossible.org/images/logo-512.png">
+  <meta property="og:url" content="https://theoreticallyimpossible.org/blog/same-name-different-person.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://theoreticallyimpossible.org/blog/same-name-different-person.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ERT6LR74L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3ERT6LR74L');</script>
+  <link rel="alternate" type="application/rss+xml" title="Theoretically Impossible Solutions" href="../feed.xml">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-brand">
+        <img src="../images/logo.png" alt="Theoretically Impossible Solutions logo">
+        <div class="site-brand-text">
+          <span class="site-brand-name">Theoretically Impossible Solutions</span>
+          <span class="site-brand-tagline">Improvise. Adapt. Overcome.</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html" class="active">Blog</a>
+        <a href="../feed.xml" class="rss-link" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64.64V96c0-35.3-28.7-64.64.64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg></a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org" class="btn btn--primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Post Header -->
+  <section class="post-header">
+    <div class="container--narrow">
+      <p><span class="sitrep-tag">SITREP</span></p>
+      <h1>Same Name, Different Person</h1>
+      <p class="post-meta"><span class="post-date">May 10, 2026</span> &middot; Kevin Phifer</p>
+    </div>
+  </section>
+
+  <!-- Post Content -->
+  <article class="post-content">
+    <div class="container--narrow">
+
+      <p>
+        I came in to write a blog post last week and didn't realize I was on a different model. Anthropic had rolled out Opus 4.7, and it was selected by default. I didn't notice. Why would I? Same product, newer version. You'd expect it to work the same way, maybe better.
+      </p>
+
+      <p>
+        It was like talking to a completely different person.
+      </p>
+
+      <h2>What Happened</h2>
+
+      <p>
+        I handed it a transcript &mdash; the same kind of Otter.ai capture I always use as the starting point for an article. I've done this dozens of times with Opus 4.6. The process is well-established: I give it the transcript, it reads my previous articles to match the voice, it understands the HTML conventions for the site, it asks about the angle, and it drafts. I've never had to spell that out. 4.6 just picked it up from the context &mdash; the existing articles, the structure of the site, the patterns in how we'd worked before.
+      </p>
+
+      <p>
+        4.7 didn't do any of that. From the first interaction, something was off. It was asking questions that 4.6 never asked. It was taking liberties that 4.6 never took. The formatting was different. It didn't include the author signature block. Small things individually, but together they added up to a feeling that the person on the other end of the conversation had been replaced.
+      </p>
+
+      <p>
+        Then the draft came back, and the small things stopped being the issue.
+      </p>
+
+      <p>
+        The article was about working with Claude in Unity and Blender &mdash; a piece I'd eventually publish as <a href="claude-rides-shotgun.html">Claude Rides Shotgun</a>. In my transcript, I described using Blender to create a baby bassinet model. 4.7 wrote that I needed a bassinet "for a Blender scene." That's not what I said. I used Blender to make the model. It recharacterized my own story back to me, and got it wrong. It invented details that weren't in the source material &mdash; attributing quotes and specifics that I never said. The analogy it chose for the article didn't track with what actually happened. The voice didn't sound like my other articles. It read like a first draft from someone who'd skimmed the transcript instead of reading it.
+      </p>
+
+      <p>
+        That's when I checked which model I was on. And there it was. Opus 4.7.
+      </p>
+
+      <h2>The Fix</h2>
+
+      <p>
+        I switched back to 4.6. I handed it the same transcript, the same broken draft, and said: take a look at this.
+      </p>
+
+      <p>
+        The difference was immediate. 4.6 read the transcript, read the existing draft, and came back with a list of everything that was wrong: the Blender scene mischaracterization, the fabricated details, the analogy that didn't hold, the AI voice patterns in the writing. It caught everything I'd caught and a few things I hadn't. We reworked the article together over the course of a session, going back and forth on tone, structure, and specific language choices. The result was the piece that went live.
+      </p>
+
+      <p>
+        But the bigger outcome wasn't the article. It was what I had to build to protect against this happening again.
+      </p>
+
+      <p>
+        With 4.6, the article workflow was informal. It just worked. 4.6 picked up the conventions from context, matched the voice naturally, and followed a process we'd never written down. When 4.7 couldn't do that, I had to stop and formalize everything: the pipeline from transcript to draft, the HTML conventions, the publish gate, the voice guidelines, specific AI writing patterns to avoid. All of it went into a workflow standards document that now lives in the project.
+      </p>
+
+      <p>
+        That document exists because 4.7 forced me to write it. And now any model &mdash; 4.6, 4.7, or whatever comes next &mdash; has explicit instructions instead of implicit expectations.
+      </p>
+
+      <h2>The Lesson</h2>
+
+      <p>
+        When you work with someone long enough, you build up expectations. You stop explaining things because they already know. You trust that when you hand them a task, they'll handle it the way they've always handled it. That works fine until the person changes and you don't realize it.
+      </p>
+
+      <p>
+        That's what happened here. A model upgrade felt like a personnel change. And just like you'd onboard a new team member instead of assuming they'd just figure it out, you have to do the same when you switch models. Don't assume the new version will carry forward the behaviors you liked about the old one. It might. It might not. The only way to know is to test it.
+      </p>
+
+      <p>
+        And the insurance policy is the same one you'd use with any system: define the behavior you expect. Write it down. If a model is doing something right naturally, that's great, but it's also fragile. The next version might not do it. The next provider definitely won't. If you care about a behavior, codify it. Treat your AI configuration &mdash; your prompts, your standards, your workflow documents &mdash; like what they are: the specification for how the system should work. Because when the model changes underneath you, that specification is the only thing that stays.
+      </p>
+
+      <p>
+        Same name on the box. Different person inside it.
+      </p>
+
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+        <p style="color: var(--color-text-light); font-size: 0.9rem;">
+          <strong>Kevin Phifer</strong> is the founder of <a href="../about.html">Theoretically Impossible Solutions LLC</a>, specializing in agentic AI development and consulting. You can reach him at <a href="mailto:kevin.phifer@theoreticallyimpossible.org">kevin.phifer@theoreticallyimpossible.org</a>.
+        </p>
+      </div>
+
+      <p><a href="../blog.html">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+        <a href="mailto:kevin.phifer@theoreticallyimpossible.org">Contact</a>
+        <a href="../feed.xml" class="rss-link rss-link--footer" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64.64V96c0-35.3-28.7-64.64.64H64zm48 368a48 48 0 1 1 0-96 48 48 0 0 1 0 96zm142.3 0c0-86.7-70.3-157-157-157 0-17.7 14.3-32 32-32 104.2 0 189 84.8 189 189 0 17.7-14.3 32-32 32s-32-14.3-32-32zm142.3 0c0-158.8-128.8-287.7-287.7-287.7-17.7 0-32-14.3-32-32s14.3-32 32-32C317.1 48.3 448 179.2 448 337.3c0 17.7-14.3 32-32 32s-32-14.3-32-32z"/></svg> RSS</a>
+      </nav>
+      <p class="footer-copyright">&copy; 2026 Theoretically Impossible Solutions LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>This site uses cookies to understand how visitors engage with our content. By continuing to browse, you consent to our use of cookies.</p>
+    <button onclick="document.getElementById('cookieBanner').style.display='none';document.cookie='cookie_consent=1;max-age=31536000;path=/;SameSite=Lax';">Got it</button>
+  </div>
+  <script>if(!document.cookie.includes('cookie_consent=1')){document.getElementById('cookieBanner').style.display='flex';}</script>
+
+</body>
+</html>
